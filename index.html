@@ -156,7 +156,7 @@
             let base = baseQuestions[i % baseQuestions.length];
             questions.push({
                 comp: base.comp,
-                case: i >= baseQuestions.length ? `{Math.floor(i/baseQuestions.length)+1}] ${base.case}` : base.case,
+                case: i >= baseQuestions.length ? `${base.case}` : base.case,
                 options: {...base.options},
                 key: base.key
             });
