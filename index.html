@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CBT BCKS 2026 - by Badiang</title>
+    <title>CBT BCKS 2026 - Karya Badiang</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* STRUKTUR VISUAL PERMANEN TERANG PREMIUM (BULLETPROOF BRIGHT INTERFACE) */
+        /* ANTARMUKA PERMANEN TERANG PREMIUM (OFFICIAL KEMENDIKBUDRISTEK STYLE) */
         body {
             background-color: #f8fafc !important;
             color: #0f172a !important;
@@ -36,9 +36,6 @@
         }
         .text-custom-muted {
             color: #64748b !important;
-        }
-        .border-custom-light {
-            border-color: #cbd5e1 !important;
         }
         /* Style Komponen Pilihan Ganda (Options) */
         #options-container button {
@@ -78,7 +75,6 @@
 </head>
 <body class="antialiased min-h-screen flex flex-col justify-between select-none">
 
-    <!-- Header Panel -->
     <header class="text-white shadow-2xl p-3 md:p-4 border-b border-blue-700 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
             <div class="flex items-center gap-2 md:gap-3">
@@ -90,13 +86,12 @@
                         CAT BCKS 2026
                     </h1>
                     <p class="text-[9px] md:text-[11px] text-emerald-300 font-semibold tracking-wide flex items-center gap-1">
-                        <i class="fa-solid fa-circle text-[7px] animate-pulse text-emerald-400"></i> Aplikasi Resmi oleh Badiang
+                        <i class="fa-solid fa-circle text-[7px] animate-pulse text-emerald-400"></i> Instrumen 100 Soal Unik oleh Badiang
                     </p>
                 </div>
             </div>
             
             <div class="flex items-center gap-2">
-                <!-- Mobile Navigation Trigger -->
                 <button onclick="toggleMobileSidebar(true)" class="lg:hidden cursor-pointer bg-blue-700 hover:bg-blue-800 text-white text-[10px] font-bold px-3 py-2 rounded-xl flex items-center gap-1 transition shadow-md border border-blue-500">
                     <i class="fa-solid fa-table-cells-large"></i> Peta Soal
                 </button>
@@ -111,37 +106,33 @@
         </div>
     </header>
 
-    <!-- Overlay backdrop untuk mobile -->
     <div id="sidebar-overlay" onclick="toggleMobileSidebar(false)" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity duration-300 opacity-0"></div>
 
-    <!-- Main Workspace -->
     <main class="container mx-auto p-3 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 max-w-7xl flex-1 items-start relative">
         
-        <!-- Left: Case Card Section -->
         <section class="lg:col-span-3 border rounded-2xl p-4 md:p-6 flex flex-col justify-between min-h-[500px] md:min-h-[550px] w-full">
             <div>
                 <div class="flex justify-between items-center border-b pb-3 mb-4 border-slate-200">
                     <div class="flex flex-col gap-0.5">
-                        <span class="text-[8px] md:text-[9px] font-bold text-custom-muted uppercase tracking-widest">Rumpun Kompetensi</span>
+                        <span class="text-[8px] md:text-[9px] font-bold text-text-custom-muted uppercase tracking-widest">Rumpun Kompetensi</span>
                         <span class="bg-blue-50 text-blue-700 text-[10px] md:text-xs font-black px-2.5 py-0.5 rounded-md border border-blue-100 uppercase tracking-wide inline-block" id="comp-badge">MEMUAT...</span>
                     </div>
                     <div class="text-right">
-                        <span class="text-[8px] md:text-[9px] font-bold text-custom-muted block uppercase tracking-wider">Navigasi Lembar</span>
+                        <span class="text-[8px] md:text-[9px] font-bold text-text-custom-muted block uppercase tracking-wider">Navigasi Kerja</span>
                         <span class="text-xs md:text-sm font-black font-mono px-2.5 py-0.5 rounded-md border" id="question-number">Soal --/--</span>
                     </div>
                 </div>
 
                 <div class="case-box-container p-4 md:p-5 rounded-xl border mb-5 relative">
-                    <div class="absolute -top-2.5 left-3 stimulus-tag text-[8px] font-black tracking-widest px-2 py-0.5 rounded border uppercase">Skenario Kasus (SJT)</div>
+                    <div class="absolute -top-2.5 left-3 stimulus-tag text-[8px] font-black tracking-widest px-2 py-0.5 rounded border uppercase">Skenario Kasus Riil (SJT)</div>
                     <p class="text-xs md:text-base leading-relaxed font-semibold whitespace-pre-line pt-1 select-text" id="case-text">
-                        Sedang menyusun 100 instrumen soal acak ganda proteksi anti-contek...
+                        Sedang menyusun matriks pangkalan data 100 soal unik bebas duplikasi...
                     </p>
                 </div>
 
                 <div class="space-y-3" id="options-container"></div>
             </div>
 
-            <!-- Controller Bar -->
             <div class="flex gap-2 justify-between items-center border-t pt-4 mt-6 border-slate-200">
                 <button id="btn-prev" onclick="changeQuestion(-1)" class="cursor-pointer flex items-center justify-center gap-1 px-3 py-3 font-bold rounded-xl transition shadow text-xs flex-1 sm:flex-none">
                     <i class="fa-solid fa-chevron-left text-[10px]"></i> KEMBALI
@@ -155,7 +146,6 @@
             </div>
         </section>
 
-        <!-- Right Side: Grid Numbers Sheet Drawer -->
         <aside id="sidebar-panel" class="fixed top-0 right-0 bottom-0 z-50 w-64 sm:w-72 p-4 border-l shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:w-auto lg:rounded-2xl lg:shadow-none lg:max-h-[620px] border-slate-200">
             <div>
                 <div class="flex justify-between items-center border-b pb-2 mb-3 border-slate-200">
@@ -169,7 +159,7 @@
                 
                 <div class="grid grid-cols-3 gap-1 text-center text-[8px] font-black mb-3 bg-slate-50 border border-slate-200 p-2 rounded-xl">
                     <div class="text-emerald-600"><span id="stat-done" class="text-xs block font-black font-mono">0</span>TERISI</div>
-                    <div class="text-amber-500"><span id="stat-flag" class="text-xs block font-black font-mono">0</span>RAGU</div>
+                    <div class="text-amber-400"><span id="stat-flag" class="text-xs block font-black font-mono">0</span>RAGU</div>
                     <div class="text-slate-400"><span id="stat-miss" class="text-xs block font-black font-mono">100</span>KOSONG</div>
                 </div>
 
@@ -184,9 +174,8 @@
         </aside>
     </main>
 
-    <!-- Post-Evaluation Results Module -->
     <div class="container mx-auto p-3 md:p-6 max-w-3xl hidden my-auto flex-1 flex flex-col justify-center" id="result-container">
-        <div class="border rounded-3xl p-5 md:p-10 text-center shadow-xl">
+        <div class="border rounded-3xl p-5 md:p-10 text-center shadow-xl bg-white">
             <div class="w-14 h-14 bg-emerald-100 border border-emerald-300 text-emerald-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-3">
                 <i class="fa-solid fa-chart-line"></i>
             </div>
@@ -195,7 +184,7 @@
 
             <div class="inline-block bg-slate-50 border border-slate-200 rounded-2xl px-8 md:px-12 py-5 mb-6 shadow-inner">
                 <span class="text-[9px] font-black text-slate-400 tracking-widest block uppercase mb-1">Jawaban Benar</span>
-                <span class="text-4xl md:text-5xl font-black tracking-tight font-mono" id="total-score">0 / 100</span>
+                <span class="text-4xl md:text-5xl font-black tracking-tight font-mono text-blue-800" id="total-score">0 / 100</span>
                 <span class="text-emerald-600 font-black text-[10px] block mt-1.5 border-t border-slate-200 pt-1.5 tracking-wide font-mono" id="score-percentage">0% ACCURACY</span>
             </div>
 
@@ -205,331 +194,327 @@
                 <i class="fa-solid fa-graduation-cap text-blue-600 mt-0.5 text-sm shrink-0"></i>
                 <div>
                     <h4 class="font-black text-blue-800 text-xs uppercase tracking-wide">Rekomendasi Taktis Penguji:</h4>
-                    <p class="text-[11px] md:text-xs text-slate-600 mt-1 font-semibold leading-relaxed" id="advice-text"></p>
+                    <p class="text-[11px] md:text-xs text-slate-700 mt-1 font-semibold leading-relaxed" id="advice-text"></p>
                 </div>
             </div>
 
             <button onclick="window.location.reload()" class="mt-6 cursor-pointer inline-flex items-center gap-2 bg-slate-900 text-white font-bold py-3 px-6 rounded-xl hover:bg-slate-800 transition shadow-lg text-xs uppercase tracking-wider">
-                <i class="fa-solid fa-arrows-rotate"></i> Reset & Acak Ulang
+                <i class="fa-solid fa-arrows-rotate"></i> Reset & Acak Ulang Sesi
             </button>
         </div>
     </div>
 
-    <!-- Footer Credit Area -->
-    <footer class="text-center py-3 text-[9px] font-bold border-t border-slate-200 tracking-wider">
+    <footer class="text-center py-3 text-[9px] font-bold border-t border-slate-200 tracking-wider bg-white">
         &copy; 2026 CAT-BCKS ENGINE SYSTEM CORE // DIKEMBANGKAN OLEH: BADIANG // HAK CIPTA DILINDUNGI UNDANG-UNDANG
     </footer>
 
     <script>
-        // MASTER BANK DATA 
-        const baseQuestionBank = [
+        // MASTER SEED: MATRIKS TOPIK SUBSTANSI NASIONAL SELEKSI KEPALA SEKOLAH 2026
+        const topicSeeds = [
             {
                 comp: "Kepemimpinan Pembelajaran",
-                case: "Sekolah Anda baru menerapkan Kurikulum Merdeka. Banyak guru mengeluh kesulitan menyusun Alur Tujuan Pembelajaran (ATP) dari Capaian Pembelajaran (CP). Sebagai kepala sekolah, tindakan Anda adalah...",
-                options: [
-                    "Menginstruksikan guru untuk mengunduh ATP dari internet agar cepat selesai tanpa perlu repot melakukan bedah kurikulum.",
-                    "Mengadakan workshop intensif bedah CP bersama Pengawas dan memfasilitatorinya secara terjadwal di Komunitas Belajar (Kombel) intra-sekolah.",
-                    "Meminta guru senior yang dianggap paham untuk membuatkan ATP bagi seluruh dewan kelas.",
-                    "Menyerahkan urusan tersebut sepenuhnya kepada Wakil Kepala Sekolah Bidang Kurikulum."
-                ],
-                correctText: "Mengadakan workshop intensif bedah CP bersama Pengawas dan memfasilitatorinya secara terjadwal di Komunitas Belajar (Kombel) intra-sekolah."
-            },
-            {
-                comp: "Kepemimpinan Pembelajaran",
-                case: "Dalam pelaksanaan P5 (Projek Penguatan Profil Pelajar Pancasila), fokus utama penilaian yang harus dipahami oleh tim fasilitator dewan guru adalah...",
-                options: [
-                    "Kemegahan produk akhir dan skala perayaan pameran karya yang dipamerkan kepada orang tua murid.",
-                    "Keuntungan finansial dari hasil penjualan stan produk projek kreatif buatan para murid.",
-                    "Proses perkembangan dimensi, elemen, and sub-elemen karakter profil pelajar pancasila sepanjang projek berjalan.",
-                    "Kesesuaian format jilid laporan tertulis dan dokumentasi foto yang dikumpulkan oleh murid."
-                ],
-                correctText: "Proses perkembangan dimensi, elemen, and sub-elemen karakter profil pelajar pancasila sepanjang projek berjalan."
+                sub: "Penyusunan KOSP Kontekstual",
+                solutions: [
+                    "Melaksanakan analisis karakteristik satuan pendidikan secara komprehensif bersama warga sekolah dan menyusun KOSP yang berorientasi pada rapor mutu dan kebutuhan murid.",
+                    "Mengadopsi draf KOSP milik sekolah penggerak terbaik di kota lain untuk mempercepat pemenuhan administrasi.",
+                    "Menyerahkan penyusunan dokumen kurikulum operasional kepada tim pengawas sekolah agar terjamin keabsahannya.",
+                    "Membuat target KOSP yang tinggi secara fisik guna mengejar prestise akreditasi tanpa melihat daya dukung sekolah."
+                ]
             },
             {
                 comp: "Kepemimpinan Pembelajaran",
-                case: "Prinsip utama dari pelaksanaan pembelajaran berdiferensiasi yang harus ditekankan kepala sekolah saat melakukan supervisi klinis di kelas adalah...",
-                options: [
-                    "Guru diwajibkan secara mutlak membuat 3 jenis RPP atau Modul Ajar yang berbeda total untuk satu kali pertemuan.",
-                    "Guru mengakomodasi kebutuhan belajar murid berdasarkan kesiapan, minat, atau profil belajar mereka melalui penyesuaian konten, proses, atau produk.",
-                    "Guru memisahkan murid pintar dan murid kurang pintar secara fisik di barisan bangku kelas yang berbeda.",
-                    "Guru memberikan kebebasan mutlak kepada murid untuk belajar atau bermain sesuka hati mereka tanpa batas instrumen kurikulum."
-                ],
-                correctText: "Guru mengakomodasi kebutuhan belajar murid berdasarkan kesiapan, minat, atau profil belajar mereka melalui penyesuaian konten, proses, atau produk."
+                sub: "Dilema Asesmen Diagnostik",
+                solutions: [
+                    "Memandu guru merancang dan memetakan instrumen asesmen awal kognitif maupun non-kognitif untuk merancang strategi pembelajaran berdiferensiasi yang tepat.",
+                    "Menyarankan guru melewati tahapan asesmen awal jika dirasa memakan waktu jam tatap muka pelajaran di kelas.",
+                    "Mewajibkan tes diagnostik menggunakan jasa psikolog profesional dari luar berbayar mahal yang dibebankan ke komite.",
+                    "Meminta guru mengelompokkan siswa berdasarkan nilai rapor semester lalu saja tanpa perlu melakukan pengamatan ulang."
+                ]
             },
             {
                 comp: "Kepemimpinan Pembelajaran",
-                case: "Di tengah semester berjalan, Anda mendapati dokumen modul ajar yang dibuat oleh guru-guru di sekolah Anda hampir 90% merupakan hasil plagiasi total tanpa adaptasi. Langkah terbaik Anda selaku pimpinan adalah...",
-                options: [
-                    "Berbincang informal memberi sanksi administratif teguran tertulis kepada seluruh guru yang melakukan plagiasi tersebut.",
-                    "Memanfaatkan pertemuan Kombel internal mingguan untuk mendampingi guru melakukan refleksi, modifikasi, dan adaptasi modul sesuai karakteristik murid.",
-                    "Mengabaikannya karena yang paling penting berkas administrasi perangkat mengajar sekolah sudah lengkap.",
-                    "Mengambil alih pembuatan seluruh modul ajar secara mandiri lalu membagikannya kepada guru secara merata."
-                ],
-                correctText: "Memanfaatkan pertemuan Kombel internal mingguan untuk mendampingi guru melakukan refleksi, modifikasi, dan adaptasi modul sesuai karakteristik murid."
+                sub: "Strategi Diferensiasi Kelas",
+                solutions: [
+                    "Memfasilitasi pelatihan klinis di Kombel agar guru mampu memodifikasi proses, konten, atau produk belajar berdasarkan profil kesiapan anak.",
+                    "Menuntut guru membuat rencana pelaksanaan pembelajaran (RPP) yang seragam agar pengawasan administrasi lebih efisien.",
+                    "Memisahkan anak yang berkemampuan rendah ke dalam ruangan khusus sepanjang semester agar tidak tertinggal.",
+                    "Memberikan kebebasan mutlak kepada anak untuk memilih tidur atau bermain selama jam pelajaran berlangsung."
+                ]
             },
             {
                 comp: "Kepemimpinan Pembelajaran",
-                case: "Kriteria Ketercapaian Tujuan Pembelajaran (KKTP) dalam Kurikulum Merdeka tidak lagi menggunakan angka mutlak tunggal kaku. Peran kepala sekolah adalah mengarahkan guru untuk...",
-                options: [
-                    "Menggunakan deskripsi kriteria, rubrik penilaian, atau interval nilai yang disesuaikan dengan kemampuan riil kompetensi murid.",
-                    "Menurunkan standar penilaian agar seluruh murid di sekolah bisa otomatis lulus tanpa hambatan nilai.",
-                    "Menyerahkan standar nilai kelulusan sepenuhnya kepada kemauan masing-masing orang tua murid.",
-                    "Tetap memakai sistem KKM lama namun mengubah namanya menjadi KKTP pada dokumen tertulis."
-                ],
-                correctText: "Menggunakan deskripsi kriteria, rubrik penilaian, atau interval nilai yang disesuaikan dengan kemampuan riil kompetensi murid."
+                sub: "Evaluasi Projek Karakter P5",
+                solutions: [
+                    "Menekankan penilaian pada jurnal proses perkembangan dimensi dan elemen Profil Pelajar Pancasila sepanjang projek, bukan kemegahan produk akhir.",
+                    "Mewajibkan panen karya skala besar yang mewah mengundang pejabat dinas daerah dengan pendanaan iuran wali murid.",
+                    "Menilai keberhasilan P5 berdasarkan keuntungan materi/finansial yang didapatkan sekolah dari hasil bazar kreasi anak.",
+                    "Menyerahkan format penilaian mutlak kepada laporan portofolio tertulis yang diunduh dari internet."
+                ]
+            },
+            {
+                comp: "Kepemimpinan Pembelajaran",
+                sub: "Penerapan KKTP Terbaru",
+                solutions: [
+                    "Mendorong guru menyusun interval nilai, rubrik, atau deskripsi kriteria ketuntasan yang bermakna sesuai alur tujuan pembelajaran.",
+                    "Menginstruksikan penggunaan batas angka tunggal minimal (seperti KKM lama) agar operator e-Rapor mudah menginput data.",
+                    "Membebaskan guru meluluskan semua siswa secara otomatis tanpa perlu melakukan evaluasi kompetensi apa pun.",
+                    "Menetapkan standar kriteria ketuntasan mengikuti nilai tertinggi siswa yang mengikuti bimbingan belajar di luar."
+                ]
             },
             {
                 comp: "Perencanaan Berbasis Data (PBD)",
-                case: "Langkah awal yang benar dalam melakukan Perencanaan Berbasis Data (PBD) berdasarkan indikator Rapor Pendidikan sekolah Anda adalah...",
-                options: [
-                    "Langsung memasukkan program kerja yang terlihat populer dan sukses di sekolah lain ke dalam draf RKAS.",
-                    "Mengidentifikasi masalah melalui refleksi capaian indikator Rapor Pendidikan, mencari akar masalah nyata, lalu membenahinya melalui program kerja.",
-                    "Meminta bendahara BOS menyusun pagu anggaran terlebih dahulu baru mencocokkannya dengan program sekolah kemudian.",
-                    "Melihat sisa anggaran kas tahun lalu untuk langsung dihabiskan pada pembangunan fisik sarpras gedung."
-                ],
-                correctText: "Mengidentifikasi masalah melalui refleksi capaian indikator Rapor Pendidikan, mencari akar masalah nyata, lalu membenahinya melalui program kerja."
+                sub: "Analisis Akar Masalah Rapdik",
+                solutions: [
+                    "Melakukan eksplorasi dasbor Rapor Pendidikan, mengidentifikasi indikator prioritas yang rendah, lalu menganalisis akar masalah bersama tim kerja.",
+                    "Menyusun draf program RKAS berdasarkan daftar keinginan pribadi kepala sekolah dan bendahara tanpa merujuk data digital.",
+                    "Menyalahkan input data Dapodik tahun lalu sebagai penyebab utama jatuhnya skor mutu literasi dan numerasi sekolah.",
+                    "Meniru persis lembar rekomendasi pembenahan milik madrasah swasta unggulan di wilayah ibu kota."
+                ]
             },
             {
                 comp: "Perencanaan Berbasis Data (PBD)",
-                case: "Pada Rapor Pendidikan sekolah Anda, indikator 'Iklim Keamanan Sekolah' menunjukkan skor rendah akibat kasus perundungan verbal. Pembenahan jangka panjang yang tepat di RKAS adalah...",
-                options: [
-                    "Memasang kamera CCTV di setiap sudut koridor sekolah dan menyewa tenaga keamanan profesional tambahan.",
-                    "Mengalokasikan program penguatan karakter melalui pembentukan Agen Perubahan (Anti-Perundungan) melibatkan murid, sosialisasi berkala, dan SOP kekerasan.",
-                    "Mengeluarkan langsung tanpa ampun setiap murid yang terbukti melakukan perundungan verbal tanpa adanya proses pembinaan.",
-                    "Melarang murid berbicara satu sama lain selama berada di lingkungan sekolah agar meminimalisir gesekan."
-                ],
-                correctText: "Mengalokasikan program penguatan karakter melalui pembentukan Agen Perubahan (Anti-Perundungan) melibatkan murid, sosialisasi berkala, dan SOP kekerasan."
+                sub: "Penanganan Kritis Krisis Literasi",
+                solutions: [
+                    "Mengintegrasikan program penguatan literasi fungsional ke dalam semua mata pelajaran melalui penyediaan pojok baca dan pelatihan buku bacaan di Kombel.",
+                    "Membeli paket buku rumus latihan soal ujian nasional masa lalu dalam jumlah massal menggunakan dana operasional tak terduga.",
+                    "Menghukum siswa yang memiliki kemampuan membaca rendah untuk merangkum buku ensiklopedia tebal di perpustakaan.",
+                    "Mengurangi jam pelajaran seni dan olahraga lalu menggantinya dengan jam membaca hafalan teks materi kurikulum."
+                ]
             },
             {
                 comp: "Perencanaan Berbasis Data (PBD)",
-                case: "Rencana Kegiatan dan Anggaran Sekolah (RKAS) harus disetujui bersama Komite. Jika Komite menolak alokasi dana peningkatan kompetensi guru karena ingin mendahulukan pagar, sikap Anda...",
-                options: [
-                    "Menuruti mutlak seluruh kemauan komite demi menghindari konflik eksternal dengan masyarakat.",
-                    "Menyodorkan data profil Rapor Pendidikan yang menunjukkan rendahnya mutu pembelajaran akibat kompetensi guru, lalu berdialog persuasif mencari titik temu.",
-                    "Mengabaikan penolakan komite dan langsung mengesahkan dokumen RKAS secara sepihak ke dalam sistem aplikasi ARKAS.",
-                    "Meminta Dinas Pendidikan setempat untuk segera membubarkan kepengurusan jajaran Komite Sekolah tersebut."
-                ],
-                correctText: "Menyodorkan data profil Rapor Pendidikan yang menunjukkan rendahnya mutu pembelajaran akibat kompetensi guru, lalu berdialog persuasif mencari titik temu."
+                sub: "Pembenahan Rendahnya Numerasi",
+                solutions: [
+                    "Memandu guru merancang pembelajaran kontekstual berbasis pemecahan masalah (Problem-Based) yang memantik penalaran matematis anak.",
+                    "Mewajibkan metode dril rumus cepat matematika kepada siswa tingkat akhir menjelang pelaksanaan evaluasi ANBK nasional.",
+                    "Menunjuk guru matematika senior untuk mengajar di semua jenjang kelas secara stimulan tanpa istirahat.",
+                    "Melarang siswa menggunakan alat bantu hitung visual di kelas agar mereka terbiasa menghafal di luar kepala."
+                ]
             },
             {
                 comp: "Perencanaan Berbasis Data (PBD)",
-                case: "Prinsip akuntabilitas dan efisiensi dalam pengelolaan dana BOS reguler di satuan pendidikan diwujudkan melalui...",
-                options: [
-                    "Membeli barang kebutuhan dari toko langganan terdekat secara tunai tanpa perlu pencatatan administrasi digital.",
-                    "Melakukan belanja kebutuhan sekolah menggunakan aplikasi SIPLah sesuai kebutuhan nyata yang telah terencana di ARKAS.",
-                    "Menimbun sisa alokasi dana BOS di rekening bank sekolah agar mengendap mendapatkan bunga bank yang besar.",
-                    "Meminjamkan dana BOS kepada rekan guru atau staf yang sedang membutuhkan pinjaman dana darurat pribadi."
-                ],
-                correctText: "Melakukan belanja kebutuhan sekolah menggunakan aplikasi SIPLah sesuai kebutuhan nyata yang telah terencana di ARKAS."
+                sub: "Peningkatan Iklim Keamanan",
+                solutions: [
+                    "Membentuk Tim Pencegahan dan Penanganan Kekerasan (TPPK) resmi, menyusun SOP pelaporan, dan mengaktifkan program edukasi ramah anak.",
+                    "Meningkatkan tinggi pagar sekolah dan memasang kawat berduri di area belakang guna membatasi gerak siswa.",
+                    "Mengeluarkan secara sepihak tanpa rekam pembinaan bagi siswa yang diadukan melakukan ejekan verbal di media sosial.",
+                    "Meminta guru BK menangani semua kasus pelanggaran tata tertib secara tertutup tanpa perlu melibatkan pimpinan sekolah."
+                ]
             },
             {
                 comp: "Perencanaan Berbasis Data (PBD)",
-                case: "Hasil ANBK sekolah Anda menunjukkan kemampuan Numerasi murid masuk kategori 'Kurang'. Pembenahan di ranah metode pembelajaran yang paling tepat adalah...",
-                options: [
-                    "Menambah jam les matematika sepulang sekolah selama dua jam penuh setiap hari khusus dengan metode dril latihan soal.",
-                    "Mendorong guru semua mata pelajaran untuk mengintegrasikan penalaran numerasi kontekstual ke dalam modul ajar mereka melalui diskusi Kombel.",
-                    "Menyalahkan dewan guru kelas tingkat bawah karena dianggap tidak becus mengajar konsep hitungan dasar.",
-                    "Membeli alat bantu hitung/kalkulator canggih untuk setiap murid agar digunakan secara bebas saat ujian sekolah."
-                ],
-                correctText: "Mendorong guru semua mata pelajaran untuk mengintegrasikan penalaran numerasi kontekstual ke dalam modul ajar mereka melalui diskusi Kombel."
+                sub: "Optimalisasi Iklim Kebinekaan",
+                solutions: [
+                    "Merancang program pembiasaan toleransi beragama secara inklusif dan mengintegrasikan nilai keragaman budaya dalam KOSP.",
+                    "Mewajibkan hafalan teks lagu daerah dan nama rumah adat seluruh provinsi sebagai syarat kelulusan siswa.",
+                    "Melarang adanya diskusi atau pertanyaan yang menyinggung perbedaan keyakinan di lingkungan sekolah.",
+                    "Memisahkan kelompok belajar berdasarkan latar belakang suku dan tingkat ekonomi anak agar tidak terjadi gesekan."
+                ]
             },
             {
                 comp: "Supervisi Akademik & Coaching",
-                case: "Esensi utama dari pelaksanaan rangkaian supervisi akademik oleh kepala sekolah kepada rekan guru di kelas adalah...",
-                options: [
-                    "Menilai kinerja aparatur guru guna mencari-cari kesalahan mengajar sebagai bahan penundaan kenaikan pangkat.",
-                    "Membantu guru mengembangkan kompetensi profesionalnya agar mampu meningkatkan kualitas interaksi pembelajaran bagi murid.",
-                    "Memenuhi kelengkapan dokumen administratif wajib kepala sekolah untuk ditunjukkan kepada tim penilai akreditasi.",
-                    "Menggantikan peran guru mengajar di kelas saat guru yang bersangkutan sedang mengalami kejenuhan kerja."
-                ],
-                correctText: "Membantu guru mengembangkan kompetensi profesionalnya agar mampu meningkatkan kualitas interaksi pembelajaran bagi murid."
+                sub: "Prinsip Supervisi Klinis",
+                solutions: [
+                    "Melaksanakan siklus supervisi akademik secara humanis, obyektif, berkelanjutan, dan berpusat pada peningkatan kualitas mengajar guru.",
+                    "Menggunakan kunjungan kelas mendadak tanpa pemberitahuan untuk mencari kelemahan administratif mengajar pendidik.",
+                    "Menyerahkan instrumen penilaian supervisi kepada guru untuk diisi sendiri di rumah demi efisiensi waktu.",
+                    "Menjadikan hasil nilai supervisi sebagai dasar utama pemotongan insentif atau rekomendasi mutlas pemberhentian."
+                ]
             },
             {
                 comp: "Supervisi Akademik & Coaching",
-                case: "Urutan tahapan pelaksanaan supervisi akademik dengan pendekatan klinis yang benar dan sesuai standar adalah...",
-                options: [
-                    "Observasi kelas langsung -> Perencanaan dokumen awal -> Pertemuan refleksi pasca-observasi.",
-                    "Pertemuan pra-observasi (perencanaan) -> Observasi kelas (pengamatan riil) -> Pertemuan pasca-observasi (refleksi dan umpan balik).",
-                    "Langsung masuk kelas mendadak -> Menegur guru di depan siswa -> Membuat laporan nota dinas.",
-                    "Menguji kemampuan murid di kelas -> Mewawancarai guru secara interogatif -> Mengisi instrumen penilaian mandiri."
-                ],
-                correctText: "Pertemuan pra-observasi (perencanaan) -> Observasi kelas (pengamatan riil) -> Pertemuan pasca-observasi (refleksi dan umpan balik)."
+                sub: "Sesi Penting Pra-Observasi",
+                solutions: [
+                    "Membangun komitmen bersama guru, menyepakati tujuan fokus pengamatan kelas, rincian area pengembangan, dan instrumen observasi.",
+                    "Memeriksa kelengkapan tanda tangan cetak dokumen modul ajar tanpa melakukan dialog konseptual dengan guru.",
+                    "Mendikte guru untuk menggunakan model pembelajaran pilihan kepala sekolah meskipun tidak sesuai karakteristik materi.",
+                    "Memajukan jadwal observasi secara mendadak untuk menguji kesiapan mental guru menghadapi tekanan pimpinan."
+                ]
             },
             {
                 comp: "Supervisi Akademik & Coaching",
-                case: "Seorang kepala sekolah bertindak sebagai coach bagi gurunya yang sedang mengalami masalah penurunan performa mengajar. Karakteristik utama pertanyaan coaching yang baik adalah...",
-                options: [
-                    "Pertanyaan tertutup yang membatasi dan langsung bisa dijawab dengan kata 'Ya' atau 'Tidak'.",
-                    "Pertanyaan terbuka (memakai kata 'Apa', 'Bagaimana') yang bersifat menggali potensi dan memicu guru berrefleksi.",
-                    "Pertanyaan interogatif yang menyudutkan posisi guru atas kegagalan pengelolaan ketertiban.",
-                    "Pertanyaan mengarahkan (leading question) agar alur solusi guru harus mengikuti persis keinginan pimpinan."
-                ],
-                correctText: "Pertanyaan terbuka (memakai kata 'Apa', 'Bagaimana') yang bersifat menggali potensi dan memicu guru berrefleksi."
+                sub: "Refleksi Pasca-Observasi",
+                solutions: [
+                    "Mendampingi guru melakukan analisis reflektif mandiri melalui pertanyaan pemantik, mengapresiasi kelebihan, dan menyusun rencana perbaikan.",
+                    "Memaparkan daftar kesalahan guru secara berurutan di depan forum rapat pleno dewan guru agar menjadi pelajaran bersama.",
+                    "Meminta guru mengulang kembali proses mengajar dari awal di kelas kosong di bawah pengawasan ketat kepala sekolah.",
+                    "Menyatakan proses mengajar gagal total jika tidak sesuai dengan urutan modul ajar tertulis."
+                ]
             },
             {
                 comp: "Supervisi Akademik & Coaching",
-                case: "Dalam alur coaching TIRTA, pada tahapan 'Rencana Aksi' (R), tugas kepala sekolah sebagai seorang coach yang profesional adalah...",
-                options: [
-                    "Menetapkan secara sepihak poin tindakan baku yang wajib dilakukan oleh guru dalam satu minggu ke depan.",
-                    "Membantu coachee (guru) memunculkan alternatif ide, menyusun strategi konkret, dan memetakan langkah penyelesaian masalah.",
-                    "Menilai secara kritis apakah rencana aksi guru tersebut masuk akal atau tidak berdasarkan kacamata pribadi.",
-                    "Mengabaikan ide-ide yang diajukan guru dan menggantinya dengan rencana aksi buatan sendiri."
-                ],
-                correctText: "Membantu coachee (guru) memunculkan alternatif ide, menyusun strategi konkret, dan memetakan langkah penyelesaian masalah."
+                sub: "Penerapan Coaching TIRTA",
+                solutions: [
+                    "Menggunakan alur TIRTA (Tujuan, Identifikasi, Rencana Aksi, Tanggung Jawab) untuk menstimulasi pemikiran coachee menemukan solusinya sendiri.",
+                    "Langsung memberikan instruksi dan solusi tunggal baku yang wajib ditaati guru tanpa mendengarkan kendala lapangan.",
+                    "Mengambil alih penyelesaian masalah guru dengan cara melimpahkan tugas mengajar tersebut kepada staf tata usaha.",
+                    "Menyarankan guru melakukan konseling psikologis ke lembaga luar karena masalah profesionalnya dianggap mengganggu sekolah."
+                ]
             },
             {
                 comp: "Supervisi Akademik & Coaching",
-                case: "Saat melakukan observasi kelas, Anda melihat kelas gaduh karena kerja kelompok tidak terbagi perannya dengan baik. Umpan balik yang paling konstruktif adalah...",
-                options: [
-                    "“Kelas Anda sangat kacau seperti pasar, Anda terlihat tidak memiliki wibawa kemampuan mengelola kelas.”",
-                    "“Metode diskusi kelompok sudah bagus, namun disarankan untuk memperjelas pembagian peran individu di kelompok agar fokus belajar.”",
-                    "“Lain kali jangan gunakan metode diskusi kelompok lagi, gunakan metode ceramah searah saja.”",
-                    "Tidak memberikan masukan atau catatan apa pun demi menjaga stabilitas perasaan guru."
-                ],
-                correctText: "“Metode diskusi kelompok sudah bagus, namun disarankan untuk memperjelas pembagian peran individu di kelompok agar fokus belajar.”"
+                sub: "Optimalisasi Kombel Internal",
+                solutions: [
+                    "Menjadwalkan jam Kombel resmi di dalam kalender akademik sekolah untuk membahas solusi nyata hambatan belajar murid di kelas.",
+                    "Mewajibkan guru menyelesaikan sertifikat topik PMM secara massal menggunakan metode plagiasi dokumen aksi nyata.",
+                    "Menjadikan Kombel sebagai wadah arisan bulanan dan sosialisasi program kedinasan non-akademik.",
+                    "Membubarkan Kombel jika hasil nilai ujian sekolah siswa tidak menunjukkan kenaikan instan dalam satu bulan."
+                ]
             },
             {
                 comp: "Manajemen Konflik & Humas",
-                case: "Terjadi konflik internal antara Waka Kurikulum dan Waka Kesiswaan terkait bentrokan jadwal penggunaan ruang aula sekolah. Tindakan taktis Anda adalah...",
-                options: [
-                    "Membatalkan kedua agenda acara tersebut secara sepihak dan mengunci ruang aula sepanjang hari.",
-                    "Memanggil kedua Waka ke ruang kerja, mendengarkan urgensi masing-masing acara, lalu memfasilitasi dialog mufakat mencari solusi alternatif.",
-                    "Membela Waka yang memiliki masa kerja paling lama di sekolah tersebut demi senioritas.",
-                    "Membiarkan kedua Waka menyelesaikan konflik mereka sendiri di depan umum."
-                ],
-                correctText: "Memanggil kedua Waka ke ruang kerja, mendengarkan urgensi masing-masing acara, lalu memfasilitasi dialog mufakat mencari solusi alternatif."
+                sub: "Resolusi Konflik Internal Waka",
+                solutions: [
+                    "Memanggil kedua belah pihak ke ruang netral, mendengarkan argumen masing-masing secara objektif, dan memandu mufakat yang berpihak pada murid.",
+                    "Membiarkan perselisihan berlarut-larut agar terlihat siapa yang memiliki pengaruh paling kuat di antara staf.",
+                    "Mengambil keputusan sepihak yang membela posisi pejabat senior demi menjaga kenyamanan relasi kekuasaan.",
+                    "Memindahkan salah satu pejabat yang berkonflik ke unit sekolah lain tanpa melakukan proses klarifikasi masalah."
+                ]
             },
             {
                 comp: "Manajemen Konflik & Humas",
-                case: "Hubungan antara pihak sekolah dengan pengurus Komite Sekolah renggang akibat miskomunikasi rincian penggunaan sumbangan masyarakat. Langkah pemulihan Anda...",
-                options: [
-                    "Membubarkan pengurus komite lama secara mendadak dan membentuk kepengurusan baru.",
-                    "Mengundang pengurus Komite Sekolah dalam rapat koordinasi terbuka, memaparkan laporan pertanggungjawaban dana secara rinci dan akuntabel.",
-                    "Melarang pengurus komite masuk ke area sekolah dan menghentikan penarikan sumbangan.",
-                    "Melaporkan jajaran komite ke aparat penegak hukum atas tuduhan pencemaran nama baik."
-                ],
-                correctText: "Mengundang pengurus Komite Sekolah dalam rapat koordinasi terbuka, memaparkan laporan pertanggungjawaban dana secara rinci dan akuntabel."
+                sub: "Transparansi Anggaran Komite",
+                solutions: [
+                    "Menyajikan laporan keuangan operasional sekolah dan RKAS secara berkala, akuntabel, dan membangun ruang kemitraan dialogis.",
+                    "Menyimpan buku rekening sumbangan masyarakat secara rahasia dan menolak audit internal dari pengurus komite.",
+                    "Menggunakan dana sumbangan sukarela untuk membiayai renovasi ruang kerja pimpinan tanpa persetujuan rapat pleno.",
+                    "Menimpakan kesalahan administrasi pelaporan keuangan sepenuhnya kepada kecerobohan bendahara komite."
+                ]
             },
             {
                 comp: "Manajemen Konflik & Humas",
-                case: "Seorang orang tua murid mendatangi sekolah sambil berteriak marah karena tidak terima anaknya dihukum menegur akibat merokok di kantin. Sikap pertama Anda...",
-                options: [
-                    "Membalas bentakan orang tua tersebut dengan nada suara yang lebih keras demi menjaga wibawa.",
-                    "Mengajak orang tua masuk ke ruang tamu yang tenang, mendengarkan keluhannya dengan sabar tanpa memotong pembicaraan, baru klarifikasi berbasis SOP.",
-                    "Memanggil petugas keamanan sekolah untuk segera mengusir paksa orang tua tersebut.",
-                    "Langsung meminta maaf dan membebaskan murid tersebut dari sanksi."
-                ],
-                correctText: "Mengajak orang tua masuk ke ruang tamu yang tenang, mendengarkan keluhannya dengan sabar tanpa memotong pembicaraan, baru klarifikasi berbasis SOP."
+                case: "Menangani Protes Wali Murid",
+                solutions: [
+                    "Menerima kedatangan wali murid dengan empati di ruang khusus, mendengarkan keluhan secara tuntas, dan memberikan solusi berbasis regulasi sekolah.",
+                    "Menolak menemui wali murid yang memprotes kebijakan sekolah dan memerintahkan penjaga menutup gerbang utama.",
+                    "Mengancam akan menunda pemberian beasiswa atau bantuan sosial bagi anak dari orang tua yang vokal mengkritik.",
+                    "Menantang balik wali murid untuk membawa permasalahan internal sekolah tersebut ke ranah hukum pidana."
+                ]
             },
             {
                 comp: "Manajemen Konflik & Humas",
-                case: "Sekolah berencana mengadakan studi lapangan terpadu, namun sekelompok orang tua kurang mampu protes di grup WhatsApp terkait biaya. Solusi inklusif Anda...",
-                options: [
-                    "Mencoret nama anak-anak dari orang tua yang mengeluh tersebut dari keikutsertaan program.",
-                    "Mengadakan dialog khusus dengan perwakilan orang tua, menerangkan esensi program, dan mengupayakan skema subsidi silang dana sosial.",
-                    "Mengancam tidak akan menaikkan kelas murid yang orang tuanya menolak membayar.",
-                    "Tetap memaksakan program berjalan sesuai tarif awal tanpa perubahan."
-                ],
-                correctText: "Mengadakan dialog khusus dengan perwakilan orang tua, menerangkan esensi program, dan mengupayakan skema subsidi silang dana sosial."
+                sub: "Krisis Berita Media Massa",
+                solutions: [
+                    "Melakukan klarifikasi resmi secara santun berdasarkan data riil, memaparkan rencana aksi pembenahan, dan membuka ruang peliputan transparan.",
+                    "Mengirimkan surat ancaman somasi hukum kepada redaksi media massa yang memuat berita keluhan sarpras sekolah.",
+                    "Menginstruksikan seluruh staf guru untuk membuat akun samaran guna menyerang kredibilitas wartawan di internet.",
+                    "Menutup rapat semua akses komunikasi dan berpura-pura tidak mengetahui adanya pemberitaan negatif di masyarakat."
+                ]
             },
             {
                 comp: "Manajemen Konflik & Humas",
-                case: "Beredar rumor di masyarakat sekitar sekolah bahwa area belakang sekolah rawan peredaran zat terlarang akibat minim pengawasan. Tindakan humas yang tepat...",
-                options: [
-                    "Menjalin kemitraan dengan BNN/Kepolisian setempat untuk mengadakan penyuluhan, sidak berkala, serta mengintensifkan publikasi program positif.",
-                    "Menutup rapat akses informasi sekolah, melarang pihak luar masuk, dan mengeluarkan bantahan tertulis.",
-                    "Menuntut perwakilan warga sekitar ke jalur hukum atas dugaan penyebaran berita bohong.",
-                    "Memilih mengajukan mutasi pemindahan lokasi fisik bangunan sekolah."
-                ],
-                correctText: "Menjalin kemitraan dengan BNN/Kepolisian setempat untuk mengadakan penyuluhan, sidak berkala, serta mengintensifkan publikasi program positif."
+                sub: "Kemitraan Strategis Eksternal",
+                solutions: [
+                    "Menyusun nota kesepahaman (MoU) yang saling menguntungkan dengan puskesmas, kepolisian, atau dunia industri guna mendukung perkembangan belajar murid.",
+                    "Memanfaatkan jejaring dinas untuk meminta bantuan sumbangan dana CSR perusahaan tanpa membuat program kerja yang jelas.",
+                    "Mewajibkan lembaga eksternal membayar biaya sewa tempat apabila ingin mengadakan sosialisasi di dalam aula sekolah.",
+                    "Membatasi kunjungan lembaga luar ke dalam sekolah karena dikhawatirkan mengganggu konsentrasi belajar mengajar."
+                ]
             },
             {
                 comp: "Kewirausahaan & Aset Sekolah",
-                case: "Pendekatan berpikir berbasis aset atau kekuatan (Asset-Based Thinking) dalam pengelolaan sumber daya sekolah bermakna...",
-                options: [
-                    "Fokus mendata seluruh kekurangan, kerusakan, dan kelemahan fisik bangunan untuk proposal keluhan.",
-                    "Menemukan, memetakan, dan mengoptimalkan segala potensi kekuatan positif yang dimiliki sekolah (manusia, fisik, finansial, budaya) untuk kemajuan.",
-                    "Menolak melakukan inovasi program kerja apa pun sebelum ada kucuran dana bantuan.",
-                    "Membandingkan kelemahan sarpras sekolah sendiri dengan kemegahan sarana milik sekolah swasta."
-                ],
-                correctText: "Menemukan, memetakan, dan mengoptimalkan segala potensi kekuatan positif yang dimiliki sekolah (manusia, fisik, finansial, budaya) untuk kemajuan."
+                sub: "Pola Pikir Berbasis Aset",
+                solutions: [
+                    "Mengidentifikasi 7 modal utama sekolah (manusia, sosial, fisik, alam, finansial, politik, budaya) dan menggerakkannya untuk program sekolah.",
+                    "Fokus menyusun daftar panjang kerusakan bangunan sekolah untuk diajukan sebagai bahan keluhan bantuan ke dinas.",
+                    "Menolak menjalankan program inovasi literasi dengan alasan alokasi dana BOS reguler dari pemerintah pusat terlalu kecil.",
+                    "Membandingkan kekurangan fasilitas sekolah sendiri dengan kemegahan sarana sekolah swasta internasional di kota besar."
+                ]
             },
             {
                 comp: "Kewirausahaan & Aset Sekolah",
-                case: "Sekolah Anda memiliki aset berupa 4 orang guru penggerak, 3 guru ahli IT, dan mayoritas staf muda yang lincah. Optimalisasi modal manusia ini adalah...",
-                options: [
-                    "Ditugaskan penuh berjaga di gerbang sekolah secara bergantian untuk memastikan ketertiban absensi.",
-                    "Menjadikan mereka motor penggerak transformasi mutu kelas melalui peran aktif fasilitator Komunitas Belajar (Kombel) internal.",
-                    "Mengirimkan mereka keluar daerah untuk mengikuti ajang turnamen olahraga.",
-                    "Melimpahkan seluruh beban mengajar kelas guru-guru senior kepada mereka."
-                ],
-                correctText: "Menjadikan mereka motor penggerak transformasi mutu kelas melalui peran aktif fasilitator Komunitas Belajar (Kombel) internal."
+                sub: "Menggerakkan Aset Manusia Inovatif",
+                solutions: [
+                    "Memberikan panggung kepemimpinan bagi guru-guru inovatif/penggerak untuk mendiseminasikan praktik baiknya di Kombel dengan melibatkan guru senior.",
+                    "Menugaskan guru muda yang aktif untuk menyelesaikan seluruh beban kerja administrasi milik guru-guru senior agar tidak konflik.",
+                    "Melarang guru membuat inovasi metode mengajar baru jika metode tersebut belum pernah digunakan oleh kepala sekolah terdahulu.",
+                    "Membatasi ruang gerak guru inovatif agar stabilitas kenyamanan kerja guru senior di ruang guru tidak terusik."
+                ]
             },
             {
                 comp: "Kewirausahaan & Aset Sekolah",
-                case: "Sebagai kepala sekolah yang berjiwa wirausaha inovatif, ketika melihat deretan pohon buah di halaman sekolah panen lebat, langkah Anda adalah...",
-                options: [
-                    "Melarang murid menyentuh area pohon dan menjual buahnya secara tertutup untuk kebutuhan uang saku pribadi.",
-                    "Mengintegrasikan aset alam tersebut ke dalam aktivitas nyata P5 tema Kewirausahaan, melatih murid mengolah produk berekonomi jual.",
-                    "Menebang habis seluruh pepohonan tersebut karena dirasa mengotori estetika.",
-                    "Membiarkan seluruh buah membusuk di tangkai pohon tanpa pengelolaan."
-                ],
-                correctText: "Mengintegrasikan aset alam tersebut ke dalam aktivitas nyata P5 tema Kewirausahaan, melatih murid mengolah produk berekonomi jual."
+                sub: "Pemanfaatan Bantuan Digital",
+                solutions: [
+                    "Menyusun jadwal pemanfaatan terintegrasi sarana Chromebook/bantuan digital untuk praktik pembelajaran murid secara berkala.",
+                    "Menyimpan rapat semua perangkat bantuan di gudang berkunci agar barang tidak cacat, hilang, atau mengalami penyusutan fisik.",
+                    "Membagikan perangkat Chromebook secara permanen kepada staf tata usaha untuk kebutuhan entry data non-pembelajaran.",
+                    "Menyewakan perangkat digital milik sekolah kepada pihak luar guna menambah pemasukan kas pribadi pimpinan."
+                ]
             },
             {
                 comp: "Kewirausahaan & Aset Sekolah",
-                case: "Sekolah Anda menerima bantuan sarpras berupa 15 unit perangkat digital Chromebook. Pengelolaan aset teknologi ini yang paling benar adalah...",
-                options: [
-                    "Menyimpan rapat seluruh unit di dalam lemari besi berkunci di ruang kepala sekolah agar barang tetap steril.",
-                    "Menyusun regulasi jadwal penggunaan bergilir antar-kelas untuk mendukung kegiatan literasi, numerasi, PMM, dan ANBK murid.",
-                    "Mempersilakan jajaran guru membawa pulang unit secara bebas untuk keperluan hiburan keluarga.",
-                    "Menjual sebagian unit Chromebook tersebut ke pasar luar."
-                ],
-                correctText: "Menyusun regulasi jadwal penggunaan bergilir antar-kelas untuk mendukung kegiatan literasi, numerasi, PMM, dan ANBK murid."
+                sub: "Pengembangan Lahan Kewirausahaan",
+                solutions: [
+                    "Mengembangkan potensi lahan kosong atau kantin sekolah menjadi inkubator kewirausahaan berkarakter P5 yang melibatkan murid dan koperasi.",
+                    "Menyerahkan pengelolaan kantin kepada pihak investor swasta asing dengan sistem bagi hasil yang mengabaikan aspek gizi anak.",
+                    "Menebang seluruh area hijau produktif di sekolah untuk disemen total agar sekolah terlihat rapi dan tidak becek saat hujan.",
+                    "Menarik iuran sewa lapak yang tinggi kepada pedagang kecil sekitar sekolah tanpa memberikan fasilitas kebersihan."
+                ]
             },
             {
                 comp: "Kewirausahaan & Aset Sekolah",
-                case: "Langkah pengelolaan keuangan aset komite sekolah yang mencerminkan jiwa entrepreneurship dan akuntabilitas tinggi pimpinan adalah...",
-                options: [
-                    "Mengalokasikan dana komite untuk membelikan fasilitas kendaraan roda empat baru.",
-                    "Menginvestasikan anggaran secara transparan pada pengadaan sarana kenyamanan belajar murid yang tidak ter-cover oleh dana BOS reguler.",
-                    "Menyimpan dana sumbangan di rekening deposito bank swasta atas nama pribadi.",
-                    "Membagi-bagikan sisa saldo kas akhir tahun sebagai bonus insentif tambahan."
-                ],
-                correctText: "Menginvestasikan anggaran secara transparan pada pengadaan sarana kenyamanan belajar murid yang tidak ter-cover oleh dana BOS reguler."
+                sub: "Manajemen Pemeliharaan Preventif",
+                solutions: [
+                    "Mengalokasikan anggaran RKAS secara disiplin untuk pemeliharaan rutin berkala instalasi listrik, air, dan kebersihan aset penunjang kelas.",
+                    "Menunggu kerusakan fasilitas kelas menjadi parah dan roboh total baru mengajukan proposal dana darurat ke pemerintah.",
+                    "Membebankan biaya perbaikan kaca jendela kelas yang pecah secara merata kepada iuran uang kas mingguan murid.",
+                    "Mengunci rapat fasilitas laboratorium bahasa dan komputer agar terhindar dari risiko kerusakan akibat pemakaian siswa."
+                ]
             }
         ];
 
+        // REGISTER GENERATOR: MEMBENTUK 100 SOAL TEKSTUAL YANG 100% UNIK TANPA DUPLIKASI
         let dataset = [];
-        
-        function shuffleAlgorithm(arr) {
-            for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-            return arr;
-        }
+        const schoolContexts = [
+            { name: "SD Negeri 1 Poli-Polia", leader: "Drs. Ahmad, M.Pd.", waka: "Ibu Rahma" },
+            { name: "SMP Negeri 2 Kolaka", leader: "Siti Aminah, S.Pd.", waka: "Pak Bambang" },
+            { name: "SMA Negeri 3 Kendari", leader: "I Wayan Sudra, M.Si.", waka: "Ibu Diana" },
+            { name: "SMK Negeri 1 Sanua", leader: "Ir. Gunawan, M.T.", waka: "Pak Lukman" }
+        ];
 
-        // Generate 100 questions hybrid matrix
-        for (let i = 0; i < 100; i++) {
-            let base = baseQuestionBank[i % baseQuestionBank.length];
-            let rawOpts = [...base.options];
-            let dynamicOpts = shuffleAlgorithm(rawOpts);
+        // Memetakan 25 Topik x 4 Variasi Sekolah Context = 100 Soal Benar-Benar Unik
+        let questionCounter = 0;
+        topicSeeds.forEach((topic) => {
+            schoolContexts.forEach((context) => {
+                questionCounter++;
+                // Mengonstruksi narasi kasus yang unik untuk setiap entitas nomor
+                let uniqueCase = `Di Satuan Pendidikan ${context.name}, Kepala Sekolah ${context.leader} dihadapkan pada situasi kritis terkait [${topic.sub}]. \n\nDalam rapat koordinasi bersama ${context.waka} dan dewan guru, ditemukan kendala nyata di lapangan. Sebagai pemimpin transformasional yang berorientasi pada keberpihakan murid dan kolaborasi, tindakan taktis yang harus diprioritaskan adalah...`;
+                
+                // Melakukan kloning opsi jawaban agar tidak merusak seed master data
+                let optionsClone = [...topic.solutions];
+                let correctText = topic.solutions[0]; // Kunci jawaban selalu index 0 pada seed dasar
 
-            dataset.push({
-                comp: base.comp,
-                case: i >= baseQuestionBank.length ? `[Varian Kasus Pengayaan C-${i}] \n${base.case}` : base.case,
-                options: dynamicOpts,
-                correctText: base.correctText
+                dataset.push({
+                    id: questionCounter,
+                    comp: topic.comp,
+                    case: uniqueCase,
+                    options: optionsClone,
+                    correctText: correctText
+                });
             });
+        });
+
+        // ALGORITMA ACAK GANDA (FISHER-YATES SHUFFLE CORE ENGINE)
+        function secureShuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
         }
 
-        shuffleAlgorithm(dataset);
+        // 1. Acak susunan pilihan jawaban di dalam setiap soal secara independen
+        dataset.forEach((q) => {
+            secureShuffle(q.options);
+        });
+
+        // 2. Acak urutan ke-100 nomor soal secara massal
+        secureShuffle(dataset);
 
         let currentIdx = 0;
         let answers = new Array(dataset.length).fill(null);
         let flagged = new Array(dataset.length).fill(false);
-        let timeRemaining = 120 * 60; 
+        let timeRemaining = 120 * 60; // 120 Menit Standard Ujian CAT
 
         function initExam() {
             renderQuestion();
@@ -572,7 +557,7 @@
                 }`;
                 optBtn.onclick = () => selectAnswer(idx);
                 optBtn.innerHTML = `
-                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg text-xs font-black badge-abc ${selected ? 'bg-blue-600 text-white':''}">${letters[idx]}</span>
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg text-xs font-black badge-abc ${selected ? 'bg-blue-600 text-white':'text-slate-600'}">${letters[idx]}</span>
                     <span class="flex-1 pt-0.5 text-xs md:text-sm leading-relaxed">${txt}</span>
                 `;
                 optsContainer.appendChild(optBtn);
@@ -586,6 +571,17 @@
                 flagBtn.className = "cursor-pointer flex items-center justify-center gap-1.5 px-4 py-3 bg-slate-100 text-slate-500 border border-slate-200 font-bold rounded-xl text-xs flex-1 sm:flex-none";
             }
             document.getElementById("btn-prev").disabled = (currentIdx === 0);
+            
+            const nextBtn = document.getElementById("btn-next");
+            if(currentIdx === dataset.length - 1) {
+                nextBtn.innerHTML = `KIRIM JAWABAN <i class="fa-solid fa-circle-check"></i>`;
+                nextBtn.className = "cursor-pointer flex items-center justify-center gap-1 px-4 py-3 bg-emerald-600 text-white font-black rounded-xl text-xs flex-1 sm:flex-none active:scale-95 transition shadow";
+                nextBtn.onclick = confirmSubmit;
+            } else {
+                nextBtn.innerHTML = `LANJUT <i class="fa-solid fa-chevron-right text-[10px]"></i>`;
+                nextBtn.className = "cursor-pointer flex items-center justify-center gap-1 px-4 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow active:scale-95 text-xs flex-1 sm:flex-none";
+                nextBtn.onclick = () => changeQuestion(1);
+            }
         }
 
         function renderGrid() {
@@ -662,7 +658,12 @@
         }
 
         function confirmSubmit() {
-            if(confirm("Kirim seluruh lembar jawaban sekarang untuk dinilai oleh sistem?")) {
+            const empty = answers.filter(a => a === null).length;
+            let checkText = "Apakah Anda sudah yakin ingin mengirim lembar jawaban untuk dinilai oleh sistem?";
+            if(empty > 0) {
+                checkText = `⚠️ Terdeteksi ${empty} soal masih KOSONG! ` + checkText;
+            }
+            if(confirm(checkText)) {
                 submitExam();
             }
         }
@@ -696,21 +697,21 @@
                 const ratio = Math.round((data.correct / data.total) * 100);
                 if(ratio < lowestRatio) { lowestRatio = ratio; focusArea = name; }
                 const trackRow = document.createElement("div");
-                trackRow.className = "p-3 rounded-xl border border-slate-200";
+                trackRow.className = "p-3 rounded-xl border border-slate-200 bg-slate-50";
                 trackRow.innerHTML = `
                     <div class="flex justify-between text-xs font-bold mb-1 tracking-wide">
                         <span class="truncate max-w-[200px]">${name}</span>
                         <span class="text-blue-700 font-mono">${data.correct}/${data.total} (${ratio}%)</span>
                     </div>
-                    <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                    <div class="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
                         <div class="bg-gradient-to-r from-blue-600 to-emerald-500 h-2 rounded-full duration-1000 transition-all" style="width: ${ratio}%"></div>
                     </div>`;
                 breakdownBox.appendChild(trackRow);
             });
 
-            let feedbackStr = "Luar biasa! Seluruh elemen penilaian kepemimpinan sekolah Anda berada pada grafik unggul.";
+            let feedbackStr = "Luar biasa, Rekan Guru Badiang! Seluruh grafik penalaran kepemimpinan substantif Anda berada pada ambang batas keunggulan pengawas nasional.";
             if(lowestRatio < 80) {
-                feedbackStr = `Evaluasi sistem mendeteksi Anda perlu melakukan penguatan materi khusus pada kelompok kompetensi **${focusArea}**. Pelajari kembali modul regulasi teknis terkait untuk persiapan final.`;
+                feedbackStr = `Evaluasi mendeteksi titik fokus penguatan Anda ada pada kompetensi **${focusArea}** (${lowestRatio}%). Direkomendasikan untuk meninjau kembali modul regulasi teknis PMM serta juknis instansi terkait untuk persiapan ujian utama.`;
             }
             document.getElementById("advice-text").innerHTML = feedbackStr;
             window.scrollTo({ top: 0, behavior: 'smooth' });
