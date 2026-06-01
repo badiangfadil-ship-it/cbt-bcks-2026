@@ -3,138 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CBT BCKS 2026 - Badiang</title>
+    <title>CBT BCKS 2026 - Android Optimized (100 Soal) | Oleh Badiang</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Smooth light mode translation stylesheet rules */
+        .light-mode {
+            background-color: #f1f5f9 !important;
+            color: #0f172a !important;
+        }
+        .light-mode header {
+            background: linear-gradient(to right, #1e3a8a, #0f172a, #1e3a8a) !important;
+        }
+        .light-mode main section, 
+        .light-mode main aside, 
+        .light-mode #sidebar-panel,
+        .light-mode #result-container > div {
+            background-color: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #0f172a !important;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05) !important;
+        }
+        .light-mode #case-text {
+            color: #1e293b !important;
+        }
+        .light-mode .bg-slate-950/60 {
+            background-color: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+        }
+        .light-mode .text-slate-300, .light-mode .text-slate-400, .light-mode .text-slate-500 {
+            color: #334155 !important;
+        }
+        .light-mode .border-slate-800, .light-mode .border-slate-900 {
+            border-color: #cbd5e1 !important;
+        }
+        .light-mode #question-grid button {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+            color: #475569;
+        }
+        .light-mode #question-grid button.bg-emerald-600 { background-color: #10b981 !important; color: white !important; }
+        .light-mode #question-grid button.bg-amber-500 { background-color: #f59e0b !important; color: white !important; }
+        .light-mode #question-grid button.ring-2 { ring-color: #2563eb !important; background-color: #dbeafe !important; color: #1e40af !important; }
+        
+        .light-mode #options-container button {
+            background-color: #ffffff;
+            border-color: #cbd5e1;
+            color: #334155;
+        }
+        .light-mode #options-container button:hover {
+            background-color: #f8fafc;
+        }
+        .light-mode #options-container button.border-blue-500 {
+            border-color: #2563eb !important;
+            background-color: #eff6ff !important;
+            color: #1e40af !important;
+        }
+        .light-mode #btn-prev, .light-mode #btn-flag {
+            background-color: #e2e8f0;
+            color: #334155;
+        }
+        .light-mode #total-score {
+            color: #1e3a8a !important;
+        }
+        .light-mode #competency-breakdown > div {
+            background-color: #f8fafc !important;
+            border-color: #e2e8f0 !important;
+        }
+        .light-mode .bg-slate-900 {
+            background-color: #e2e8f0 !important;
+            color: #0f172a !important;
+        }
+        .light-mode footer {
+            background-color: #0f172a !important;
+            color: #94a3b8 !important;
+        }
+    </style>
 </head>
 <body class="bg-slate-900 text-slate-100 antialiased min-h-screen flex flex-col justify-between select-none">
 
-    <!-- Header Panel (Optimized for Android & Desktop) -->
+    <!-- Header Panel (With Theme Switcher and Creator Credit) -->
     <header class="bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 text-white shadow-2xl p-3 md:p-4 border-b border-blue-900/40 sticky top-0 z-40">
         <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
             <div class="flex items-center gap-2 md:gap-3">
                 <div class="bg-blue-600 p-2 rounded-xl shadow-lg ring-2 ring-blue-400/30 shrink-0">
-                    <i class="fa-solid fa-shield-halved text-base md:text-xl text-white"></i>
+                    <i class="fa-solid fa-graduation-cap text-base md:text-xl text-white"></i>
                 </div>
                 <div>
-                    <h1 class="font-black text-xs md:text-lg tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-blue-200 uppercase truncate max-w-[180px] sm:max-w-none">
+                    <h1 class="font-black text-xs md:text-lg tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-blue-200 uppercase truncate max-w-[150px] sm:max-w-none">
                         CAT BCKS 2026
                     </h1>
                     <p class="text-[9px] md:text-[11px] text-emerald-400 font-semibold tracking-wide flex items-center gap-1">
-                        <span class="inline-block w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping"></span> Secure Android Mode
+                        <i class="fa-solid fa-circle text-[7px] animate-pulse"></i> Aplikasi Resmi Aplikasi oleh Badiang
                     </p>
                 </div>
             </div>
             
             <div class="flex items-center gap-2">
-                <!-- Mobile Only Trigger Button for Peta Lembar Jawaban -->
-                <button onclick="toggleMobileSidebar(true)" class="lg:hidden cursor-pointer bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-[11px] font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition border border-blue-400/30 shadow-md">
-                    <i class="fa-solid fa-table-cells-large"></i> Peta Soal
+                <!-- Theme Switcher Button -->
+                <button onclick="toggleTheme()" class="cursor-pointer bg-slate-800 border border-slate-700 hover:bg-slate-700 text-white text-[10px] md:text-xs font-bold px-2.5 py-2 rounded-xl flex items-center gap-1 transition shadow-md">
+                    <i class="fa-solid fa-circle-half-stroke text-amber-400" id="theme-icon"></i> <span id="theme-text" class="hidden sm:inline">Tema</span>
                 </button>
 
-                <div class="bg-slate-950/80 border border-slate-800 px-3 md:px-5 py-1.5 rounded-xl text-center flex items-center gap-2">
-                    <i class="fa-solid fa-hourglass-half text-amber-400 text-sm md:text-lg animate-pulse"></i>
+                <!-- Mobile Navigation Trigger Trigger -->
+                <button onclick="toggleMobileSidebar(true)" class="lg:hidden cursor-pointer bg-blue-600 hover:bg-blue-700 text-white text-[10px] font-bold px-2.5 py-2 rounded-xl flex items-center gap-1 transition shadow-md">
+                    <i class="fa-solid fa-table-cells-large"></i> Peta
+                </button>
+
+                <div class="bg-slate-950/80 border border-slate-800 px-2 md:px-4 py-1.5 rounded-xl text-center flex items-center gap-1.5 shadow-inner">
+                    <i class="fa-solid fa-hourglass-half text-amber-400 text-xs md:text-sm animate-pulse"></i>
                     <div class="text-left">
-                        <span class="text-[8px] md:text-[9px] block text-slate-500 font-bold tracking-widest uppercase">Waktu</span>
-                        <span id="timer" class="font-mono text-sm md:text-lg font-black text-amber-400 tracking-wider">120:00</span>
+                        <span id="timer" class="font-mono text-xs md:text-base font-black text-amber-400">120:00</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Dark Overlay Backdrop for Android Drawer View -->
+    <!-- Background Mask For Mobile Drawers -->
     <div id="sidebar-overlay" onclick="toggleMobileSidebar(false)" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity duration-300 opacity-0"></div>
 
-    <!-- Main Workspace Layout -->
+    <!-- Main Content Workspace Grid -->
     <main class="container mx-auto p-3 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 max-w-7xl flex-1 items-start relative">
         
-        <!-- Left Column: Case Question Card -->
+        <!-- Left: Cases Sheet Layout -->
         <section class="lg:col-span-3 bg-slate-950/40 border border-slate-800 rounded-2xl p-4 md:p-6 flex flex-col justify-between min-h-[500px] md:min-h-[550px] shadow-xl backdrop-blur-sm w-full">
             <div>
                 <div class="flex justify-between items-center border-b border-slate-800/80 pb-3 mb-4">
                     <div class="flex flex-col gap-0.5">
                         <span class="text-[8px] md:text-[9px] font-bold text-slate-500 uppercase tracking-widest">Rumpun Kompetensi</span>
-                        <span class="bg-blue-950/60 text-blue-400 text-[10px] md:text-xs font-black px-2.5 py-0.5 rounded-md border border-blue-900/60 uppercase tracking-wide inline-block shadow-inner" id="comp-badge">
-                            MEMUAT...
-                        </span>
+                        <span class="bg-blue-950/60 text-blue-400 text-[10px] md:text-xs font-black px-2.5 py-0.5 rounded-md border border-blue-900/60 uppercase tracking-wide inline-block" id="comp-badge">MEMUAT...</span>
                     </div>
                     <div class="text-right">
-                        <span class="text-[8px] md:text-[9px] font-bold text-slate-500 block uppercase tracking-wider">Navigasi Kerja</span>
-                        <span class="text-xs md:text-sm font-black text-slate-200 font-mono bg-slate-900 px-2.5 py-0.5 rounded-md border border-slate-800" id="question-number">
-                            Soal --/--
-                        </span>
+                        <span class="text-[8px] md:text-[9px] font-bold text-slate-500 block uppercase tracking-wider">Navigasi Lembar</span>
+                        <span class="text-xs md:text-sm font-black text-slate-200 font-mono bg-slate-900 px-2.5 py-0.5 rounded-md border border-slate-800" id="question-number">Soal --/--</span>
                     </div>
                 </div>
 
-                <!-- Case Text Block -->
                 <div class="bg-slate-950/60 p-4 md:p-5 rounded-xl border border-slate-800 mb-5 shadow-inner relative">
                     <div class="absolute -top-2.5 left-3 bg-slate-800 text-[8px] font-black tracking-widest text-slate-400 px-2 py-0.5 rounded border border-slate-700 uppercase">Skenario Kasus (SJT)</div>
                     <p class="text-xs md:text-base leading-relaxed font-semibold text-slate-300 whitespace-pre-line pt-1 select-text" id="case-text">
-                        Sedang mengacak susunan instrumen soal dengan proteksi ganda...
+                        Sedang menyusun 100 instrumen soal acak ganda proteksi anti-contek...
                     </p>
                 </div>
 
-                <!-- Dynamic Options Container -->
                 <div class="space-y-3" id="options-container"></div>
             </div>
 
-            <!-- Operational Control Action Toolbar -->
+            <!-- Controller Bar -->
             <div class="flex gap-2 justify-between items-center border-t border-slate-800/80 pt-4 mt-6">
-                <button id="btn-prev" onclick="changeQuestion(-1)" class="cursor-pointer flex items-center justify-center gap-1.5 px-4 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-xl transition shadow active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed text-xs flex-1 sm:flex-none">
+                <button id="btn-prev" onclick="changeQuestion(-1)" class="cursor-pointer flex items-center justify-center gap-1 px-3 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-xl transition shadow active:scale-95 disabled:opacity-30 text-xs flex-1 sm:flex-none">
                     <i class="fa-solid fa-chevron-left text-[10px]"></i> KEMBALI
                 </button>
-                
-                <button id="btn-flag" onclick="toggleFlag()" class="cursor-pointer flex items-center justify-center gap-1.5 px-4 py-3 bg-slate-800 text-slate-400 font-bold rounded-xl hover:bg-amber-500 hover:text-white transition shadow active:scale-95 text-xs flex-1 sm:flex-none">
-                    <i class="fa-regular fa-flag" id="flag-icon"></i> <span id="flag-text">RAGU</span>
+                <button id="btn-flag" onclick="toggleFlag()" class="cursor-pointer flex items-center justify-center gap-1 px-3 py-3 bg-slate-800 text-slate-400 font-bold rounded-xl hover:bg-amber-500 hover:text-white transition shadow active:scale-95 text-xs flex-1 sm:flex-none">
+                    <i class="fa-regular fa-flag" id="flag-icon"></i> <span>RAGU</span>
                 </button>
-                
-                <button id="btn-next" onclick="changeQuestion(1)" class="cursor-pointer flex items-center justify-center gap-1.5 px-4 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow active:scale-95 text-xs flex-1 sm:flex-none">
+                <button id="btn-next" onclick="changeQuestion(1)" class="cursor-pointer flex items-center justify-center gap-1 px-3 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow active:scale-95 text-xs flex-1 sm:flex-none">
                     LANJUT <i class="fa-solid fa-chevron-right text-[10px]"></i>
                 </button>
             </div>
         </section>
 
-        <!-- Right Column: Map Grid Panel (Now a slide drawer on Mobile Android) -->
-        <aside id="sidebar-panel" class="fixed top-0 right-0 bottom-0 z-50 w-72 sm:w-80 bg-slate-950 p-4 border-l border-slate-800 shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:w-auto lg:bg-white/5 lg:border lg:border-slate-800 lg:rounded-2xl lg:shadow-none lg:max-h-[620px]">
+        <!-- Right Side: Grid Numbers Sheet Drawer -->
+        <aside id="sidebar-panel" class="fixed top-0 right-0 bottom-0 z-50 w-64 sm:w-72 bg-slate-950 p-4 border-l border-slate-800 shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:w-auto lg:bg-white/5 lg:border lg:border-slate-800 lg:rounded-2xl lg:shadow-none lg:max-h-[620px]">
             <div>
-                <!-- Drawer Header Close Button (Visible only on Android/Mobile) -->
-                <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4 lg:mb-2">
-                    <h3 class="font-black text-slate-400 uppercase tracking-widest text-xs flex items-center gap-1.5">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-2 mb-3">
+                    <h3 class="font-black text-slate-400 uppercase tracking-widest text-[11px] flex items-center gap-1">
                         <i class="fa-solid fa-network-wired text-blue-500"></i> Peta Lembar Jawaban
                     </h3>
-                    <button onclick="toggleMobileSidebar(false)" class="lg:hidden cursor-pointer text-slate-500 hover:text-white active:scale-90 p-1.5 text-sm">
-                        <i class="fa-solid fa-xmark"></i> TUTUP
+                    <button onclick="toggleMobileSidebar(false)" class="lg:hidden cursor-pointer text-slate-500 hover:text-white p-1 text-xs">
+                        <i class="fa-solid fa-xmark"></i>
                     </button>
                 </div>
                 
-                <!-- Live Summary Counter Panel -->
-                <div class="grid grid-cols-3 gap-1 text-center text-[8px] font-black mb-4 bg-slate-900 border border-slate-800/80 p-2 rounded-xl">
+                <div class="grid grid-cols-3 gap-1 text-center text-[8px] font-black mb-3 bg-slate-900 border border-slate-800/80 p-2 rounded-xl">
                     <div class="text-emerald-400"><span id="stat-done" class="text-xs block font-black font-mono">0</span>TERISI</div>
                     <div class="text-amber-400"><span id="stat-flag" class="text-xs block font-black font-mono">0</span>RAGU</div>
                     <div class="text-slate-500"><span id="stat-miss" class="text-xs block font-black font-mono">100</span>KOSONG</div>
                 </div>
 
-                <!-- Scrolling Map Cells Matrix -->
-                <div class="grid grid-cols-5 gap-1.5 max-h-[60vh] lg:max-h-[350px] overflow-y-auto p-1 bg-slate-950/40 border border-slate-900 rounded-xl" id="question-grid"></div>
+                <div class="grid grid-cols-5 gap-1 max-h-[60vh] lg:max-h-[350px] overflow-y-auto p-1 bg-slate-950/40 border border-slate-900 rounded-xl" id="question-grid"></div>
             </div>
 
             <div class="mt-4 border-t border-slate-800/80 pt-3">
-                <button onclick="confirmSubmit()" class="w-full bg-emerald-600 text-white font-black py-3 rounded-xl hover:bg-emerald-700 transition shadow-lg tracking-widest cursor-pointer active:scale-95 text-center uppercase text-xs">
+                <button onclick="confirmSubmit()" class="w-full bg-emerald-600 text-white font-black py-2.5 rounded-xl hover:bg-emerald-700 transition shadow-lg tracking-widest cursor-pointer text-center uppercase text-xs">
                     <i class="fa-solid fa-lock-open mr-1"></i> KIRIM JAWABAN
                 </button>
             </div>
         </aside>
     </main>
 
-    <!-- Post-Evaluation Dashboard Panel -->
+    <!-- Post-Evaluation Results Module -->
     <div class="container mx-auto p-3 md:p-6 max-w-3xl hidden my-auto flex-1 flex flex-col justify-center" id="result-container">
         <div class="bg-slate-950/80 border border-slate-800 rounded-3xl p-5 md:p-10 text-center shadow-2xl backdrop-blur">
-            <div class="w-14 h-14 bg-emerald-950/50 border border-emerald-500 text-emerald-400 rounded-full flex items-center justify-center text-2xl mx-auto mb-3 shadow-inner">
+            <div class="w-14 h-14 bg-emerald-950/50 border border-emerald-500 text-emerald-400 rounded-full flex items-center justify-center text-2xl mx-auto mb-3">
                 <i class="fa-solid fa-chart-line"></i>
             </div>
-            <h2 class="text-xl md:text-3xl font-black text-slate-100 tracking-wide uppercase">HASIL DIAGNOSIS KOMPETENSI</h2>
-            <p class="text-slate-500 font-bold text-[10px] mt-1 mb-6 tracking-wider uppercase">Analisis Nilai Uji Coba CAT 100 Soal</p>
+            <h2 class="text-xl md:text-3xl font-black text-slate-100 tracking-wide uppercase">DIAGNOSIS KELULUSAN</h2>
+            <p class="text-slate-500 font-bold text-[10px] mt-1 mb-6 tracking-wider uppercase">Analisis Penilaian Mandiri – Aplikasi Hasil Karya Badiang</p>
 
             <div class="inline-block bg-slate-900 border border-slate-800 rounded-2xl px-8 md:px-12 py-5 mb-6 shadow-inner">
                 <span class="text-[9px] font-black text-slate-500 tracking-widest block uppercase mb-1">Jawaban Benar</span>
@@ -158,13 +224,13 @@
         </div>
     </div>
 
-    <!-- Bottom Footer Layout -->
-    <footer class="bg-slate-950 text-slate-600 text-center py-2.5 text-[9px] font-bold border-t border-slate-900/60 tracking-wider">
-        CORE ENGINE v100.0-MOBILE // ENGINE CORE INTEGRITY // 2026
+    <!-- Footer Credit Area -->
+    <footer class="bg-slate-950 text-slate-600 text-center py-3 text-[9px] font-bold border-t border-slate-900/60 tracking-wider">
+        &copy; 2026 CAT-BCKS ENGINE SYSTEM CORE // DIKEMBANGKAN OLEH: BADIANG // HAK CIPTA DILINDUNGI UNDANG-UNDANG
     </footer>
 
     <script>
-        // MASTER REPOSITORY DATABASE (25 Autentik Kasus dengan Nilai Opsi dinamis)
+        // MASTER BANK DATA
         const baseQuestionBank = [
             {
                 comp: "Kepemimpinan Pembelajaran",
@@ -183,10 +249,10 @@
                 options: [
                     "Kemegahan produk akhir dan skala perayaan pameran karya yang dipamerkan kepada orang tua murid.",
                     "Keuntungan finansial dari hasil penjualan stan produk projek kreatif buatan para murid.",
-                    "Proses perkembangan dimensi, elemen, dan sub-elemen karakter profil pelajar pancasila sepanjang projek berjalan.",
+                    "Proses perkembangan dimensi, elemen, and sub-elemen karakter profil pelajar pancasila sepanjang projek berjalan.",
                     "Kesesuaian format jilid laporan tertulis dan dokumentasi foto yang dikumpulkan oleh murid."
                 ],
-                correctText: "Proses perkembangan dimensi, elemen, dan sub-elemen karakter profil pelajar pancasila sepanjang projek berjalan."
+                correctText: "Proses perkembangan dimensi, elemen, and sub-elemen karakter profil pelajar pancasila sepanjang projek berjalan."
             },
             {
                 comp: "Kepemimpinan Pembelajaran",
@@ -443,18 +509,16 @@
             }
         ];
 
-        // HYBRID MATRIX LOAD ENGINE: GENERATE 100 UNIQUE DOUBLE-SHUFFLED INSTANCES
         let dataset = [];
         
         function shuffleAlgorithm(arr) {
             for (let i = arr.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[arr[j] ? j : i]] = [arr[j], arr[i]];
+                [arr[i], arr[j]] = [arr[j], arr[i]];
             }
             return arr;
         }
 
-        // Loop array to fill out target length of 100 native nodes
         for (let i = 0; i < 100; i++) {
             let base = baseQuestionBank[i % baseQuestionBank.length];
             let rawOpts = [...base.options];
@@ -462,19 +526,18 @@
 
             dataset.push({
                 comp: base.comp,
-                case: i >= baseQuestionBank.length ? `[Varian Kasus Pengayaan C-${i}] \n${base.case}` : base.case,
+                case: i >= baseQuestionBank.length ? `[Skenario Pengembangan Kasus ${i}] \n${base.case}` : base.case,
                 options: dynamicOpts,
                 correctText: base.correctText
             });
         }
 
-        // Final random scramble mix for complete index distribution
         shuffleAlgorithm(dataset);
 
         let currentIdx = 0;
         let answers = new Array(dataset.length).fill(null);
         let flagged = new Array(dataset.length).fill(false);
-        let timeRemaining = 120 * 60; // 120 Minutes
+        let timeRemaining = 120 * 60;
 
         function initExam() {
             renderQuestion();
@@ -483,11 +546,22 @@
             startTimer();
         }
 
-        // UI Responsive Toggle Drawer Logic for Android Screens
+        // Theme Switcher Core Logic
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById("theme-icon");
+            body.classList.toggle("light-mode");
+            
+            if(body.classList.contains("light-mode")) {
+                icon.className = "fa-solid fa-sun text-amber-500";
+            } else {
+                icon.className = "fa-solid fa-circle-half-stroke text-amber-400";
+            }
+        }
+
         function toggleMobileSidebar(open) {
             const panel = document.getElementById("sidebar-panel");
             const overlay = document.getElementById("sidebar-overlay");
-            
             if (open) {
                 overlay.classList.remove("hidden");
                 setTimeout(() => {
@@ -509,56 +583,40 @@
 
             const optsContainer = document.getElementById("options-container");
             optsContainer.innerHTML = "";
-
             const letters = ["A", "B", "C", "D"];
 
             q.options.forEach((txt, idx) => {
                 const selected = answers[currentIdx] === idx;
                 const optBtn = document.createElement("button");
-                optBtn.className = `w-full text-left p-3.5 md:p-4 rounded-xl border transition flex items-start gap-3 cursor-pointer ${
-                    selected 
-                    ? "border-blue-500 bg-blue-950/50 text-blue-300 font-bold shadow-md shadow-blue-950/80" 
-                    : "border-slate-800 bg-slate-950/30 text-slate-300 hover:bg-slate-800/40"
+                optBtn.className = `w-full text-left p-3.5 rounded-xl border transition flex items-start gap-3 cursor-pointer ${
+                    selected ? "border-blue-500 bg-blue-950/50 text-blue-300 font-bold shadow-md" : "border-slate-800 bg-slate-950/30 text-slate-300 hover:bg-slate-800/40"
                 }`;
                 optBtn.onclick = () => selectAnswer(idx);
                 optBtn.innerHTML = `
-                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg text-xs font-black ${
-                        selected ? "bg-blue-600 text-white" : "bg-slate-800 text-slate-400"
-                    }">${letters[idx]}</span>
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg text-xs font-black ${selected ? 'bg-blue-600 text-white':'bg-slate-800 text-slate-400'}">${letters[idx]}</span>
                     <span class="flex-1 pt-0.5 text-xs md:text-sm leading-relaxed">${txt}</span>
                 `;
                 optsContainer.appendChild(optBtn);
             });
 
-            // Adjust Flag View State
             const stateFlagged = flagged[currentIdx];
             const flagBtn = document.getElementById("btn-flag");
-            const flagIcon = document.getElementById("flag-icon");
-            const flagText = document.getElementById("flag-text");
-
             if(stateFlagged) {
-                flagBtn.className = "cursor-pointer flex items-center justify-center gap-1.5 px-4 py-3 bg-amber-600 text-white font-black rounded-xl shadow-inner text-xs flex-1 sm:flex-none";
-                flagIcon.className = "fa-solid fa-flag text-white";
-                flagText.innerText = "RAGU";
+                flagBtn.className = "cursor-pointer flex items-center justify-center gap-1.5 px-4 py-3 bg-amber-600 text-white font-black rounded-xl text-xs flex-1 sm:flex-none";
             } else {
-                flagBtn.className = "cursor-pointer flex items-center justify-center gap-1.5 px-4 py-3 bg-slate-800 text-slate-400 font-bold rounded-xl hover:bg-amber-500 hover:text-white transition text-xs flex-1 sm:flex-none";
-                flagIcon.className = "fa-regular fa-flag";
-                flagText.innerText = "RAGU";
+                flagBtn.className = "cursor-pointer flex items-center justify-center gap-1.5 px-4 py-3 bg-slate-800 text-slate-400 font-bold rounded-xl text-xs flex-1 sm:flex-none";
             }
-
             document.getElementById("btn-prev").disabled = (currentIdx === 0);
         }
 
         function renderGrid() {
             const grid = document.getElementById("question-grid");
             grid.innerHTML = "";
-
             dataset.forEach((_, idx) => {
                 const curr = idx === currentIdx;
                 const filled = answers[idx] !== null;
                 const flag = flagged[idx];
-
-                let cellStyle = "bg-slate-950/60 border-slate-800 text-slate-500 hover:bg-slate-800/40";
+                let cellStyle = "bg-slate-950/60 border-slate-800 text-slate-500";
                 if (filled) cellStyle = "bg-emerald-950/60 border-emerald-800 text-emerald-400 font-black shadow-inner";
                 if (flag) cellStyle = "bg-amber-950/60 border-amber-800 text-amber-400 font-black";
                 if (curr) cellStyle += " ring-2 ring-blue-500 text-white border-transparent bg-slate-800 scale-105";
@@ -568,7 +626,7 @@
                 cell.innerText = idx + 1;
                 cell.onclick = () => {
                     jumpToQuestion(idx);
-                    toggleMobileSidebar(false); // Auto close sidebar on touch inside Android view
+                    toggleMobileSidebar(false);
                 };
                 grid.appendChild(cell);
             });
@@ -577,7 +635,6 @@
         function updateStats() {
             const done = answers.filter(a => a !== null).length;
             const flags = flagged.filter(f => f === true).length;
-
             document.getElementById("stat-done").innerText = done;
             document.getElementById("stat-flag").innerText = flags;
             document.getElementById("stat-miss").innerText = dataset.length - done;
@@ -585,8 +642,6 @@
 
         function changeQuestion(dir) {
             currentIdx += dir;
-            if (currentIdx < 0) currentIdx = 0;
-            if (currentIdx >= dataset.length) currentIdx = dataset.length - 1;
             renderQuestion();
             renderGrid();
         }
@@ -627,12 +682,7 @@
         }
 
         function confirmSubmit() {
-            const empty = answers.filter(a => a === null).length;
-            let checkText = "Kirim seluruh lembar jawaban sekarang untuk dinilai sistem?";
-            if(empty > 0) {
-                checkText = `⚠️ Terdeteksi ${empty} soal masih KOSONG! ` + checkText;
-            }
-            if(confirm(checkText)) {
+            if(confirm("Kirim seluruh lembar jawaban sekarang untuk dinilai oleh sistem?")) {
                 submitExam();
             }
         }
@@ -640,14 +690,12 @@
         function submitExam() {
             document.getElementById("exam-container").classList.add("hidden");
             document.getElementById("result-container").classList.remove("hidden");
-
             let score = 0;
             let metrics = {};
 
             dataset.forEach((q, idx) => {
                 if(!metrics[q.comp]) metrics[q.comp] = { total: 0, correct: 0 };
                 metrics[q.comp].total++;
-
                 const selectedIndex = answers[idx];
                 if(selectedIndex !== null && q.options[selectedIndex] === q.correctText) {
                     score++;
@@ -661,17 +709,12 @@
 
             const breakdownBox = document.getElementById("competency-breakdown");
             breakdownBox.innerHTML = "";
-
             let focusArea = "";
             let lowestRatio = 101;
 
             Object.entries(metrics).forEach(([name, data]) => {
                 const ratio = Math.round((data.correct / data.total) * 100);
-                if(ratio < lowestRatio) {
-                    lowestRatio = ratio;
-                    focusArea = name;
-                }
-
+                if(ratio < lowestRatio) { lowestRatio = ratio; focusArea = name; }
                 const trackRow = document.createElement("div");
                 trackRow.className = "bg-slate-950/40 p-3 rounded-xl border border-slate-800/60";
                 trackRow.innerHTML = `
@@ -679,16 +722,15 @@
                         <span class="text-slate-300 truncate max-w-[200px]">${name}</span>
                         <span class="text-blue-400 font-mono">${data.correct}/${data.total} (${ratio}%)</span>
                     </div>
-                    <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden border border-slate-700/30">
+                    <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
                         <div class="bg-gradient-to-r from-blue-500 to-emerald-500 h-2 rounded-full duration-1000 transition-all" style="width: ${ratio}%"></div>
-                    </div>
-                `;
+                    </div>`;
                 breakdownBox.appendChild(trackRow);
             });
 
             let feedbackStr = "Luar biasa! Seluruh elemen penilaian substantif kepemimpinan sekolah Anda berada pada grafik unggul.";
-            if(lowestScoreRatio = 80) {
-                feedbackStr = `Evaluasi mendeteksi Anda perlu melakukan penguatan materi pada kelompok kompetensi **${focusArea}**. Pelajari juknis Kemendikbudristek terkait untuk persiapan ujian final.`;
+            if(lowestRatio < 80) {
+                feedbackStr = `Evaluasi sistem mendeteksi Anda perlu melakukan penguatan materi khusus pada kelompok kompetensi **${focusArea}**. Pelajari kembali modul regulasi teknis terkait untuk persiapan final.`;
             }
             document.getElementById("advice-text").innerHTML = feedbackStr;
             window.scrollTo({ top: 0, behavior: 'smooth' });
