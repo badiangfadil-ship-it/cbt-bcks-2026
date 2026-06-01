@@ -3,149 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CBT Seleksi Substansi BCKS 2026 - Badiang</title>
+    <title>CBT BCKS 2026 - Badiang</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-slate-900 text-slate-100 antialiased min-h-screen flex flex-col justify-between">
+<body class="bg-slate-900 text-slate-100 antialiased min-h-screen flex flex-col justify-between select-none">
 
-    <header class="bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 text-white shadow-2xl p-4 border-b border-blue-900/40 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3">
-                <div class="bg-blue-600 p-2.5 rounded-xl shadow-lg ring-2 ring-blue-400/30">
-                    <i class="fa-solid fa-shield-halved text-xl text-white"></i>
+    <!-- Header Panel (Optimized for Android & Desktop) -->
+    <header class="bg-gradient-to-r from-slate-950 via-blue-950 to-slate-950 text-white shadow-2xl p-3 md:p-4 border-b border-blue-900/40 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
+            <div class="flex items-center gap-2 md:gap-3">
+                <div class="bg-blue-600 p-2 rounded-xl shadow-lg ring-2 ring-blue-400/30 shrink-0">
+                    <i class="fa-solid fa-shield-halved text-base md:text-xl text-white"></i>
                 </div>
                 <div>
-                    <h1 class="font-black text-base md:text-lg tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-blue-200 uppercase">
-                        CAT SUBSTANSI BCKS 2026 (100 SOAL COMPREHENSIVE)
+                    <h1 class="font-black text-xs md:text-lg tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-blue-200 uppercase truncate max-w-[180px] sm:max-w-none">
+                        CAT BCKS 2026
                     </h1>
-                    <p class="text-[11px] text-emerald-400 font-semibold tracking-wide flex items-center gap-1.5">
-                        <i class="fa-solid fa-lock text-xs"></i> Sistem Proteksi Ganda: Urutan Soal & Opsi Pilihan Diacak Menggunakan Fisher-Yates
+                    <p class="text-[9px] md:text-[11px] text-emerald-400 font-semibold tracking-wide flex items-center gap-1">
+                        <span class="inline-block w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping"></span> Secure Android Mode
                     </p>
                 </div>
             </div>
             
-            <div class="bg-slate-950/80 border border-slate-800 px-5 py-1.5 rounded-xl text-center flex items-center gap-3">
-                <i class="fa-solid fa-hourglass-half text-amber-400 text-lg animate-pulse"></i>
-                <div class="text-left">
-                    <span class="text-[9px] block text-slate-500 font-bold tracking-widest uppercase">Sisa Waktu</span>
-                    <span id="timer" class="font-mono text-lg font-black text-amber-400 tracking-wider">120:00</span>
+            <div class="flex items-center gap-2">
+                <!-- Mobile Only Trigger Button for Peta Lembar Jawaban -->
+                <button onclick="toggleMobileSidebar(true)" class="lg:hidden cursor-pointer bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-[11px] font-bold px-3 py-2 rounded-xl flex items-center gap-1.5 transition border border-blue-400/30 shadow-md">
+                    <i class="fa-solid fa-table-cells-large"></i> Peta Soal
+                </button>
+
+                <div class="bg-slate-950/80 border border-slate-800 px-3 md:px-5 py-1.5 rounded-xl text-center flex items-center gap-2">
+                    <i class="fa-solid fa-hourglass-half text-amber-400 text-sm md:text-lg animate-pulse"></i>
+                    <div class="text-left">
+                        <span class="text-[8px] md:text-[9px] block text-slate-500 font-bold tracking-widest uppercase">Waktu</span>
+                        <span id="timer" class="font-mono text-sm md:text-lg font-black text-amber-400 tracking-wider">120:00</span>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <main class="container mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 max-w-7xl flex-1 flex items-start" id="exam-container">
-        <section class="lg:col-span-3 bg-slate-950/40 border border-slate-800 rounded-2xl p-5 md:p-6 flex flex-col justify-between min-h-[550px] shadow-xl backdrop-blur-sm">
+    <!-- Dark Overlay Backdrop for Android Drawer View -->
+    <div id="sidebar-overlay" onclick="toggleMobileSidebar(false)" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-40 hidden lg:hidden transition-opacity duration-300 opacity-0"></div>
+
+    <!-- Main Workspace Layout -->
+    <main class="container mx-auto p-3 md:p-6 grid grid-cols-1 lg:grid-cols-4 gap-6 max-w-7xl flex-1 items-start relative">
+        
+        <!-- Left Column: Case Question Card -->
+        <section class="lg:col-span-3 bg-slate-950/40 border border-slate-800 rounded-2xl p-4 md:p-6 flex flex-col justify-between min-h-[500px] md:min-h-[550px] shadow-xl backdrop-blur-sm w-full">
             <div>
-                <div class="flex justify-between items-center border-b border-slate-800 pb-4 mb-5">
-                    <div class="flex flex-col gap-1">
-                        <span class="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Rumpun Kompetensi</span>
-                        <span class="bg-blue-950/60 text-blue-400 text-xs font-black px-3 py-1 rounded-lg border border-blue-900/60 uppercase tracking-wide shadow-inner" id="comp-badge">
+                <div class="flex justify-between items-center border-b border-slate-800/80 pb-3 mb-4">
+                    <div class="flex flex-col gap-0.5">
+                        <span class="text-[8px] md:text-[9px] font-bold text-slate-500 uppercase tracking-widest">Rumpun Kompetensi</span>
+                        <span class="bg-blue-950/60 text-blue-400 text-[10px] md:text-xs font-black px-2.5 py-0.5 rounded-md border border-blue-900/60 uppercase tracking-wide inline-block shadow-inner" id="comp-badge">
                             MEMUAT...
                         </span>
                     </div>
                     <div class="text-right">
-                        <span class="text-[9px] font-bold text-slate-500 block uppercase tracking-wider">Navigasi Kerja</span>
-                        <span class="text-sm font-black text-slate-200 font-mono bg-slate-900 px-2.5 py-1 rounded-md border border-slate-800" id="question-number">
+                        <span class="text-[8px] md:text-[9px] font-bold text-slate-500 block uppercase tracking-wider">Navigasi Kerja</span>
+                        <span class="text-xs md:text-sm font-black text-slate-200 font-mono bg-slate-900 px-2.5 py-0.5 rounded-md border border-slate-800" id="question-number">
                             Soal --/--
                         </span>
                     </div>
                 </div>
 
-                <div class="bg-slate-950/60 p-5 rounded-2xl border border-slate-800 mb-6 shadow-inner relative">
-                    <div class="absolute -top-2.5 left-4 bg-slate-800 text-[9px] font-black tracking-widest text-slate-400 px-2.5 py-0.5 rounded-md border border-slate-700 uppercase">Studi Kasus Kepemimpinan (SJT)</div>
-                    <p class="text-sm md:text-base leading-relaxed font-semibold text-slate-300 whitespace-pre-line pt-1" id="case-text">
-                        Sedang melakukan inisialisasi pengacakan ganda pangkalan data...
+                <!-- Case Text Block -->
+                <div class="bg-slate-950/60 p-4 md:p-5 rounded-xl border border-slate-800 mb-5 shadow-inner relative">
+                    <div class="absolute -top-2.5 left-3 bg-slate-800 text-[8px] font-black tracking-widest text-slate-400 px-2 py-0.5 rounded border border-slate-700 uppercase">Skenario Kasus (SJT)</div>
+                    <p class="text-xs md:text-base leading-relaxed font-semibold text-slate-300 whitespace-pre-line pt-1 select-text" id="case-text">
+                        Sedang mengacak susunan instrumen soal dengan proteksi ganda...
                     </p>
                 </div>
 
-                <div class="space-y-3.5" id="options-container"></div>
+                <!-- Dynamic Options Container -->
+                <div class="space-y-3" id="options-container"></div>
             </div>
 
-            <div class="flex flex-wrap gap-3 justify-between items-center border-t border-slate-800/80 pt-5 mt-8">
-                <button id="btn-prev" onclick="changeQuestion(-1)" class="cursor-pointer flex items-center gap-2 px-5 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-xl transition shadow disabled:opacity-30 disabled:cursor-not-allowed text-xs md:text-sm">
-                    <i class="fa-solid fa-chevron-left"></i> SEBELUMNYA
+            <!-- Operational Control Action Toolbar -->
+            <div class="flex gap-2 justify-between items-center border-t border-slate-800/80 pt-4 mt-6">
+                <button id="btn-prev" onclick="changeQuestion(-1)" class="cursor-pointer flex items-center justify-center gap-1.5 px-4 py-3 bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold rounded-xl transition shadow active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed text-xs flex-1 sm:flex-none">
+                    <i class="fa-solid fa-chevron-left text-[10px]"></i> KEMBALI
                 </button>
                 
-                <button id="btn-flag" onclick="toggleFlag()" class="cursor-pointer flex items-center gap-2 px-6 py-3 bg-slate-800 text-slate-400 font-bold rounded-xl hover:bg-amber-500 hover:text-white transition shadow text-xs md:text-sm">
-                    <i class="fa-regular fa-flag" id="flag-icon"></i> <span id="flag-text">RAGU-RAGU</span>
+                <button id="btn-flag" onclick="toggleFlag()" class="cursor-pointer flex items-center justify-center gap-1.5 px-4 py-3 bg-slate-800 text-slate-400 font-bold rounded-xl hover:bg-amber-500 hover:text-white transition shadow active:scale-95 text-xs flex-1 sm:flex-none">
+                    <i class="fa-regular fa-flag" id="flag-icon"></i> <span id="flag-text">RAGU</span>
                 </button>
                 
-                <button id="btn-next" onclick="changeQuestion(1)" class="cursor-pointer flex items-center gap-2 px-5 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow text-xs md:text-sm">
-                    SELANJUTNYA <i class="fa-solid fa-chevron-right"></i>
+                <button id="btn-next" onclick="changeQuestion(1)" class="cursor-pointer flex items-center justify-center gap-1.5 px-4 py-3 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition shadow active:scale-95 text-xs flex-1 sm:flex-none">
+                    LANJUT <i class="fa-solid fa-chevron-right text-[10px]"></i>
                 </button>
             </div>
         </section>
 
-        <aside class="bg-white/5 border border-slate-800 rounded-2xl p-4 flex flex-col justify-between self-stretch lg:max-h-[650px]">
+        <!-- Right Column: Map Grid Panel (Now a slide drawer on Mobile Android) -->
+        <aside id="sidebar-panel" class="fixed top-0 right-0 bottom-0 z-50 w-72 sm:w-80 bg-slate-950 p-4 border-l border-slate-800 shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:w-auto lg:bg-white/5 lg:border lg:border-slate-800 lg:rounded-2xl lg:shadow-none lg:max-h-[620px]">
             <div>
-                <div class="text-center border-b border-slate-800 pb-3 mb-4">
-                    <h3 class="font-black text-slate-400 uppercase tracking-widest text-xs"><i class="fa-solid fa-network-wired mr-1 text-blue-500"></i> Peta Lembar Jawaban</h3>
+                <!-- Drawer Header Close Button (Visible only on Android/Mobile) -->
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4 lg:mb-2">
+                    <h3 class="font-black text-slate-400 uppercase tracking-widest text-xs flex items-center gap-1.5">
+                        <i class="fa-solid fa-network-wired text-blue-500"></i> Peta Lembar Jawaban
+                    </h3>
+                    <button onclick="toggleMobileSidebar(false)" class="lg:hidden cursor-pointer text-slate-500 hover:text-white active:scale-90 p-1.5 text-sm">
+                        <i class="fa-solid fa-xmark"></i> TUTUP
+                    </button>
                 </div>
                 
-                <div class="grid grid-cols-3 gap-1.5 text-center text-[9px] font-black mb-4 bg-slate-950/80 p-2.5 rounded-xl border border-slate-800/60">
+                <!-- Live Summary Counter Panel -->
+                <div class="grid grid-cols-3 gap-1 text-center text-[8px] font-black mb-4 bg-slate-900 border border-slate-800/80 p-2 rounded-xl">
                     <div class="text-emerald-400"><span id="stat-done" class="text-xs block font-black font-mono">0</span>TERISI</div>
                     <div class="text-amber-400"><span id="stat-flag" class="text-xs block font-black font-mono">0</span>RAGU</div>
                     <div class="text-slate-500"><span id="stat-miss" class="text-xs block font-black font-mono">100</span>KOSONG</div>
                 </div>
 
-                <div class="grid grid-cols-5 gap-1.5 max-h-[380px] overflow-y-auto p-1 border border-slate-950 rounded-xl bg-slate-950/40" id="question-grid"></div>
+                <!-- Scrolling Map Cells Matrix -->
+                <div class="grid grid-cols-5 gap-1.5 max-h-[60vh] lg:max-h-[350px] overflow-y-auto p-1 bg-slate-950/40 border border-slate-900 rounded-xl" id="question-grid"></div>
             </div>
 
-            <div class="mt-6 border-t border-slate-800/80 pt-4">
-                <button onclick="confirmSubmit()" class="w-full bg-emerald-600 text-white font-black py-3.5 px-4 rounded-xl hover:bg-emerald-700 transition shadow-lg tracking-widest cursor-pointer text-center uppercase text-xs">
+            <div class="mt-4 border-t border-slate-800/80 pt-3">
+                <button onclick="confirmSubmit()" class="w-full bg-emerald-600 text-white font-black py-3 rounded-xl hover:bg-emerald-700 transition shadow-lg tracking-widest cursor-pointer active:scale-95 text-center uppercase text-xs">
                     <i class="fa-solid fa-lock-open mr-1"></i> KIRIM JAWABAN
                 </button>
             </div>
         </aside>
     </main>
 
-    <div class="container mx-auto p-4 md:p-6 max-w-3xl hidden my-auto flex-1 flex flex-col justify-center" id="result-container">
-        <div class="bg-slate-950/80 border border-slate-800 rounded-3xl p-6 md:p-10 text-center shadow-2xl backdrop-blur">
-            <div class="w-16 h-16 bg-emerald-950/50 border border-emerald-500 text-emerald-400 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-inner">
+    <!-- Post-Evaluation Dashboard Panel -->
+    <div class="container mx-auto p-3 md:p-6 max-w-3xl hidden my-auto flex-1 flex flex-col justify-center" id="result-container">
+        <div class="bg-slate-950/80 border border-slate-800 rounded-3xl p-5 md:p-10 text-center shadow-2xl backdrop-blur">
+            <div class="w-14 h-14 bg-emerald-950/50 border border-emerald-500 text-emerald-400 rounded-full flex items-center justify-center text-2xl mx-auto mb-3 shadow-inner">
                 <i class="fa-solid fa-chart-line"></i>
             </div>
-            <h2 class="text-2xl md:text-3xl font-black text-slate-100 tracking-wide uppercase">HASIL DIAGNOSIS KOMPETENSI BCKS</h2>
-            <p class="text-slate-500 font-bold text-xs mt-1 mb-8 tracking-wider uppercase">Hasil Analisis Riil Uji Coba CAT 100 Soal Instansi</p>
+            <h2 class="text-xl md:text-3xl font-black text-slate-100 tracking-wide uppercase">HASIL DIAGNOSIS KOMPETENSI</h2>
+            <p class="text-slate-500 font-bold text-[10px] mt-1 mb-6 tracking-wider uppercase">Analisis Nilai Uji Coba CAT 100 Soal</p>
 
-            <div class="inline-block bg-slate-900 border border-slate-800 rounded-3xl px-12 py-7 mb-8 shadow-inner">
-                <span class="text-[10px] font-black text-slate-500 tracking-widest block uppercase mb-1">Total Jawaban Benar</span>
-                <span class="text-5xl font-black text-blue-400 tracking-tight font-mono" id="total-score">0 / 100</span>
-                <span class="text-emerald-400 font-black text-xs block mt-2 border-t border-slate-800 pt-2 tracking-wide font-mono" id="score-percentage">0% ACCURACY</span>
+            <div class="inline-block bg-slate-900 border border-slate-800 rounded-2xl px-8 md:px-12 py-5 mb-6 shadow-inner">
+                <span class="text-[9px] font-black text-slate-500 tracking-widest block uppercase mb-1">Jawaban Benar</span>
+                <span class="text-4xl md:text-5xl font-black text-blue-400 tracking-tight font-mono" id="total-score">0 / 100</span>
+                <span class="text-emerald-400 font-black text-[10px] block mt-1.5 border-t border-slate-800 pt-1.5 tracking-wide font-mono" id="score-percentage">0% ACCURACY</span>
             </div>
 
-            <div class="text-left bg-slate-900/50 border border-slate-800/60 p-5 md:p-6 rounded-2xl space-y-4 mb-8" id="competency-breakdown"></div>
+            <div class="text-left bg-slate-900/50 border border-slate-800/60 p-4 md:p-6 rounded-xl space-y-3.5 mb-6" id="competency-breakdown"></div>
 
-            <div class="bg-blue-950/40 border-l-4 border-blue-500 p-4 rounded-r-2xl text-left flex items-start gap-3 border border-y-slate-800 border-r-slate-800" id="advice-box">
-                <i class="fa-solid fa-graduation-cap text-blue-400 mt-0.5 text-base"></i>
+            <div class="bg-blue-950/40 border-l-4 border-blue-500 p-4 rounded-r-xl text-left flex items-start gap-3 border border-y-slate-800 border-r-slate-800" id="advice-box">
+                <i class="fa-solid fa-graduation-cap text-blue-400 mt-0.5 text-sm shrink-0"></i>
                 <div>
-                    <h4 class="font-black text-blue-300 text-xs md:text-sm uppercase tracking-wide">Rekomendasi Taktis Tim Penguji:</h4>
-                    <p class="text-xs text-slate-400 mt-1 font-semibold leading-relaxed" id="advice-text"></p>
+                    <h4 class="font-black text-blue-300 text-xs uppercase tracking-wide">Rekomendasi Taktis Penguji:</h4>
+                    <p class="text-[11px] md:text-xs text-slate-400 mt-1 font-semibold leading-relaxed" id="advice-text"></p>
                 </div>
             </div>
 
-            <button onclick="window.location.reload()" class="mt-8 cursor-pointer inline-flex items-center gap-2 bg-blue-600 text-white font-black py-3.5 px-8 rounded-xl hover:bg-blue-700 transition shadow-lg text-xs tracking-wider uppercase">
-                <i class="fa-solid fa-arrows-rotate"></i> Reset & Acak Ulang Sesi
+            <button onclick="window.location.reload()" class="mt-6 cursor-pointer inline-flex items-center gap-2 bg-blue-600 text-white font-black py-3 px-6 rounded-xl hover:bg-blue-700 transition shadow-lg text-xs uppercase tracking-wider">
+                <i class="fa-solid fa-arrows-rotate"></i> Reset & Acak Ulang
             </button>
         </div>
     </div>
 
-    <footer class="bg-slate-950 text-slate-600 text-center py-3 text-[10px] font-bold border-t border-slate-900/60 tracking-wider">
-        CORE ENGINE v100.0 // DOUBLE-SHUFFLE SECURE PROTOCOL INTEGRITY // 2026
+    <!-- Bottom Footer Layout -->
+    <footer class="bg-slate-950 text-slate-600 text-center py-2.5 text-[9px] font-bold border-t border-slate-900/60 tracking-wider">
+        CORE ENGINE v100.0-MOBILE // ENGINE CORE INTEGRITY // 2026
     </footer>
 
     <script>
-        // MASTER BANK SOAL ACUAN (25 Soal Autentik Kasus dengan Pilihan Jawaban Acak)
+        // MASTER REPOSITORY DATABASE (25 Autentik Kasus dengan Nilai Opsi dinamis)
         const baseQuestionBank = [
             {
                 comp: "Kepemimpinan Pembelajaran",
                 case: "Sekolah Anda baru menerapkan Kurikulum Merdeka. Banyak guru mengeluh kesulitan menyusun Alur Tujuan Pembelajaran (ATP) dari Capaian Pembelajaran (CP). Sebagai kepala sekolah, tindakan Anda adalah...",
                 options: [
-                    "Menginstruksikan guru untuk mengunduh ATP dari internet agar cepat selesai tanpa perlu repot.",
+                    "Menginstruksikan guru untuk mengunduh ATP dari internet agar cepat selesai tanpa perlu repot melakukan bedah kurikulum.",
                     "Mengadakan workshop intensif bedah CP bersama Pengawas dan memfasilitatorinya secara terjadwal di Komunitas Belajar (Kombel) intra-sekolah.",
                     "Meminta guru senior yang dianggap paham untuk membuatkan ATP bagi seluruh dewan kelas.",
-                    "Menyerahkan urusan tersebut sepenuhnya kepada Wakil Kepala Sekolah Bidang Kurikulum."
+                    "Menyerahkan urusan tersebut sepenuhnya kepada Wakil Kepala Sekolah Bidang Kurikulum untuk menyelesaikannya sendiri."
                 ],
                 correctText: "Mengadakan workshop intensif bedah CP bersama Pengawas dan memfasilitatorinya secara terjadwal di Komunitas Belajar (Kombel) intra-sekolah."
             },
@@ -167,7 +195,7 @@
                     "Guru diwajibkan secara mutlak membuat 3 jenis RPP atau Modul Ajar yang berbeda total untuk satu kali pertemuan.",
                     "Guru mengakomodasi kebutuhan belajar murid berdasarkan kesiapan, minat, atau profil belajar mereka melalui penyesuaian konten, proses, atau produk.",
                     "Guru memisahkan murid pintar dan murid kurang pintar secara fisik di barisan bangku kelas yang berbeda.",
-                    "Guru memberikan kebebasan mutlak kepada murid untuk belajar atau bermain sesuka hati mereka tanpa batas."
+                    "Guru memberikan kebebasan mutlak kepada murid untuk belajar atau bermain sesuka hati mereka tanpa batas instrumen kurikulum."
                 ],
                 correctText: "Guru mengakomodasi kebutuhan belajar murid berdasarkan kesiapan, minat, atau profil belajar mereka melalui penyesuaian konten, proses, atau produk."
             },
@@ -175,9 +203,9 @@
                 comp: "Kepemimpinan Pembelajaran",
                 case: "Di tengah semester berjalan, Anda mendapati dokumen modul ajar yang dibuat oleh guru-guru di sekolah Anda hampir 90% merupakan hasil plagiasi total tanpa adaptasi. Langkah terbaik Anda selaku pimpinan adalah...",
                 options: [
-                    "Memberikan sanksi administratif teguran tertulis kepada seluruh guru yang melakukan plagiasi tersebut.",
+                    "Berbincang informal memberi sanksi administratif teguran tertulis kepada seluruh guru yang melakukan plagiasi tersebut.",
                     "Memanfaatkan pertemuan Kombel internal mingguan untuk mendampingi guru melakukan refleksi, modifikasi, dan adaptasi modul sesuai karakteristik murid.",
-                    "Mengabaikannya karena yang paling penting berkas administrasi perangkat mengajar sekolah sudah lengkap saat diperiksa.",
+                    "Mengabaikannya karena yang paling penting berkas administrasi perangkat mengajar sekolah sudah lengkap saat ada pemeriksaan pengawas.",
                     "Mengambil alih pembuatan seluruh modul ajar secara mandiri lalu membagikannya kepada guru secara merata."
                 ],
                 correctText: "Memanfaatkan pertemuan Kombel internal mingguan untuk mendampingi guru melakukan refleksi, modifikasi, dan adaptasi modul sesuai karakteristik murid."
@@ -199,7 +227,7 @@
                 options: [
                     "Langsung memasukkan program kerja yang terlihat populer dan sukses di sekolah lain ke dalam draf RKAS.",
                     "Mengidentifikasi masalah melalui refleksi capaian indikator Rapor Pendidikan, mencari akar masalah nyata, lalu membenahinya melalui program kerja.",
-                    "Meminta bendahara BOS menyusun pagu anggaran terlebih dahulu baru mencocokkannya dengan program sekolah.",
+                    "Meminta bendahara BOS menyusun pagu anggaran terlebih dahulu baru mencocokkannya dengan program sekolah kemudian.",
                     "Melihat sisa anggaran kas tahun lalu untuk langsung dihabiskan pada pembangunan fisik sarpras gedung."
                 ],
                 correctText: "Mengidentifikasi masalah melalui refleksi capaian indikator Rapor Pendidikan, mencari akar masalah nyata, lalu membenahinya melalui program kerja."
@@ -210,8 +238,8 @@
                 options: [
                     "Memasang kamera CCTV di setiap sudut koridor sekolah dan menyewa tenaga keamanan profesional tambahan.",
                     "Mengalokasikan program penguatan karakter melalui pembentukan Agen Perubahan (Anti-Perundungan) melibatkan murid, sosialisasi berkala, dan SOP kekerasan.",
-                    "Mengeluarkan langsung setiap murid yang terbukti melakukan perundungan verbal tanpa adanya proses pembinaan.",
-                    "Melarang murid berbicara satu sama lain selama berada di lingkungan sekolah agar meminimalisir gesekan."
+                    "Mengeluarkan langsung tanpa ampun setiap murid yang terbukti melakukan perundungan verbal tanpa adanya proses pembinaan.",
+                    "Melarang murid berbicara satu sama lain selama berada di lingkungan sekolah agar meminimalisir gesekan konflik."
                 ],
                 correctText: "Mengalokasikan program penguatan karakter melalui pembentukan Agen Perubahan (Anti-Perundungan) melibatkan murid, sosialisasi berkala, dan SOP kekerasan."
             },
@@ -219,12 +247,12 @@
                 comp: "Perencanaan Berbasis Data (PBD)",
                 case: "Rencana Kegiatan dan Anggaran Sekolah (RKAS) harus disetujui bersama Komite. Jika Komite menolak alokasi dana peningkatan kompetensi guru karena ingin mendahulukan pagar, sikap Anda...",
                 options: [
-                    "Menuruti mutlak seluruh kemauan komite demi menghindari konflik eksternal dengan masyarakat sekitar.",
-                    "Menyodorkan data profil Rapor Pendidikan yang menunjukkan rendahnya mutu pembelajaran akibat kompetensi guru, lalu berdialog persuasif.",
+                    "Menuruti mutlak seluruh kemauan komite demi menghindari konflik eksternal dengan masyarakat dan tokoh sekitar.",
+                    "Menyodorkan data profil Rapor Pendidikan yang menunjukkan rendahnya mutu pembelajaran akibat kompetensi guru, lalu berdialog persuasif mencari titik temu.",
                     "Mengabaikan penolakan komite dan langsung mengesahkan dokumen RKAS secara sepihak ke dalam sistem aplikasi ARKAS.",
                     "Meminta Dinas Pendidikan setempat untuk segera membubarkan kepengurusan jajaran Komite Sekolah tersebut."
                 ],
-                correctText: "Menyodorkan data profil Rapor Pendidikan yang menunjukkan rendahnya mutu pembelajaran akibat kompetensi guru, lalu berdialog persuasif."
+                correctText: "Menyodorkan data profil Rapor Pendidikan yang menunjukkan rendahnya mutu pembelajaran akibat kompetensi guru, lalu berdialog persuasif mencari titik temu."
             },
             {
                 comp: "Perencanaan Berbasis Data (PBD)",
@@ -254,7 +282,7 @@
                 options: [
                     "Menilai kinerja aparatur guru guna mencari-cari kesalahan mengajar sebagai bahan penundaan kenaikan pangkat.",
                     "Membantu guru mengembangkan kompetensi profesionalnya agar mampu meningkatkan kualitas interaksi pembelajaran bagi murid.",
-                    "Memenuhi kelengkapan dokumen administratif wajib kepala sekolah untuk ditunjukkan kepada tim penilai akreditasi.",
+                    "Memenuhi kelengkapan dokumen administratif wajib kepala sekolah untuk ditunjukkan kepada tim penilai akreditasi wilayah.",
                     "Menggantikan peran guru mengajar di kelas saat guru yang bersangkutan sedang mengalami kejenuhan kerja."
                 ],
                 correctText: "Membantu guru mengembangkan kompetensi profesionalnya agar mampu meningkatkan kualitas interaksi pembelajaran bagi murid."
@@ -276,8 +304,8 @@
                 options: [
                     "Pertanyaan tertutup yang membatasi dan langsung bisa dijawab dengan kata 'Ya' atau 'Tidak'.",
                     "Pertanyaan terbuka (memakai kata 'Apa', 'Bagaimana') yang bersifat menggali potensi dan memicu guru berrefleksi.",
-                    "Pertanyaan interogatif yang menyudutkan posisi guru atas kegagalan pengelolaan kelas.",
-                    "Pertanyaan mengarahkan agar alur solusi guru harus mengikuti persis keinginan subjektif kepala sekolah."
+                    "Pertanyaan interogatif yang menyudutkan posisi guru atas kegagalan pengelolaan ketertiban ruang kelas.",
+                    "Pertanyaan mengarahkan (leading question) agar alur solusi guru harus mengikuti persis keinginan subjektif kepala sekolah."
                 ],
                 correctText: "Pertanyaan terbuka (memakai kata 'Apa', 'Bagaimana') yang bersifat menggali potensi dan memicu guru berrefleksi."
             },
@@ -299,7 +327,7 @@
                     "“Kelas Anda sangat kacau seperti pasar, Anda terlihat tidak memiliki wibawa kemampuan mengelola kelas.”",
                     "“Metode diskusi kelompok sudah bagus, namun disarankan untuk memperjelas pembagian peran individu di kelompok agar fokus belajar.”",
                     "“Lain kali jangan gunakan metode diskusi kelompok lagi, gunakan metode ceramah searah saja agar kelas senyap.”",
-                    "Tidak memberikan masukan atau catatan apa pun demi menjaga stabilitas perasaan guru."
+                    "Tidak memberikan masukan atau catatan apa pun demi menjaga stabilitas perasaan guru agar tidak tersinggung."
                 ],
                 correctText: "“Metode diskusi kelompok sudah bagus, namun disarankan untuk memperjelas pembagian peran individu di kelompok agar fokus belajar.”"
             },
@@ -318,21 +346,21 @@
                 comp: "Manajemen Konflik & Humas",
                 case: "Hubungan antara pihak sekolah dengan pengurus Komite Sekolah renggang akibat miskomunikasi rincian penggunaan sumbangan masyarakat. Langkah pemulihan Anda...",
                 options: [
-                    "Membubarkan pengurus komite lama secara mendadak dan membentuk kepengurusan baru dari unsur keluarga.",
+                    "Membubarkan pengurus komite lama secara mendadak dan membentuk kepengurusan baru dari unsur keluarga dekat.",
                     "Mengundang pengurus Komite Sekolah dalam rapat koordinasi terbuka, memaparkan laporan pertanggungjawaban dana secara rinci dan akuntabel.",
                     "Melarang pengurus komite masuk ke area sekolah dan menghentikan penarikan sumbangan sukarela selamanya.",
-                    "Melaporkan jajaran komite ke aparat penegak hukum atas tuduhan pencemaran nama baik institusi."
+                    "Melaporkan jajaran komite ke aparat penegak hukum atas tuduhan pencemaran nama baik institusi pendidikan."
                 ],
                 correctText: "Mengundang pengurus Komite Sekolah dalam rapat koordinasi terbuka, memaparkan laporan pertanggungjawaban dana secara rinci dan akuntabel."
             },
             {
                 comp: "Manajemen Konflik & Humas",
-                case: "Seorang orang tahu murid mendatangi sekolah sambil berteriak marah karena tidak terima anaknya dihukum menegur akibat merokok di kantin. Sikap pertama Anda...",
+                case: "Seorang orang tua murid mendatangi sekolah sambil berteriak marah karena tidak terima anaknya dihukum menegur akibat merokok di kantin. Sikap pertama Anda...",
                 options: [
                     "Membalas bentakan orang tua tersebut dengan nada suara yang lebih keras demi menjaga wibawa instansi.",
                     "Mengajak orang tua masuk ke ruang tamu yang tenang, mendengarkan keluhannya dengan sabar tanpa memotong pembicaraan, baru klarifikasi berbasis SOP.",
-                    "Memanggil petugas keamanan sekolah untuk segera mengusir paksa orang tua tersebut keluar dari gerbang.",
-                    "Langsung meminta maaf dan membebaskan murid tersebut dari segala sanksi tata tertib sekolah."
+                    "Memanggil petugas keamanan sekolah untuk segera mengusir paksa orang tua tersebut keluar dari gerbang sekolah.",
+                    "Langsung meminta maaf dan membebaskan murid tersebut dari segala sanksi tata tertib sekolah demi meredam situasi."
                 ],
                 correctText: "Mengajak orang tua masuk ke ruang tamu yang tenang, mendengarkan keluhannya dengan sabar tanpa memotong pembicaraan, baru klarifikasi berbasis SOP."
             },
@@ -340,10 +368,10 @@
                 comp: "Manajemen Konflik & Humas",
                 case: "Sekolah berencana mengadakan studi lapangan terpadu, namun sekelompok orang tua kurang mampu protes di grup WhatsApp terkait biaya. Solusi inklusif Anda...",
                 options: [
-                    "Mencoret nama anak-anak dari orang tua yang mengeluh tersebut dari keikutsertaan program.",
+                    "Mencoret nama anak-anak dari orang tua yang mengeluh tersebut dari keikutsertaan program dan menyuruhnya belajar mandiri.",
                     "Mengadakan dialog khusus dengan perwakilan orang tua, menerangkan esensi program, dan mengupayakan skema subsidi silang dana sosial.",
-                    "Mengancam tidak akan menaikkan kelas murid yang orang tuanya menolak melakukan pembayaran iuran.",
-                    "Tetap memaksakan program berjalan sesuai tarif awal tanpa perubahan dan memilih mengabaikan keluhan kelompok."
+                    "Mengancam tidak akan menaikkan kelas murid yang orang tuanya menolak melakukan pembayaran iuran program.",
+                    "Tetap memaksakan program berjalan sesuai tarif awal tanpa perubahan dan memilih mengabaikan keluhan kelompok minoritas."
                 ],
                 correctText: "Mengadakan dialog khusus dengan perwakilan orang tua, menerangkan esensi program, dan mengupayakan skema subsidi silang dana sosial."
             },
@@ -351,21 +379,21 @@
                 comp: "Manajemen Konflik & Humas",
                 case: "Beredar rumor di masyarakat sekitar sekolah bahwa area belakang sekolah rawan peredaran zat terlarang akibat minim pengawasan. Tindakan humas yang tepat...",
                 options: [
-                    "Menjalin kemitraan dengan BNN/Kepolisian setempat untuk mengadakan penyuluhan, sidak berkala, serta mengintensifkan publikasi program positif.",
-                    "Menutup rapat akses informasi sekolah, melarang pihak luar masuk, dan mengeluarkan bantahan tertulis.",
-                    "Menuntut perwakilan warga sekitar ke jalur hukum atas dugaan penyebaran berita bohong.",
-                    "Memilih mengajukan mutasi pemindahan lokasi fisik bangunan sekolah ke area kecamatan lain."
+                    "Menjalin kemitraan dengan BNN/Kepolisian setempat untuk mengadakan penyuluhan, sidak berkala, serta mengintensifkan publikasi program positif sekolah.",
+                    "Menutup rapat akses informasi sekolah, melarang pihak luar masuk, dan mengeluarkan bantahan tertulis tanpa aksi lapangan.",
+                    "Menuntut perwakilan warga sekitar ke jalur hukum atas dugaan penyebaran berita bohong yang merusak nama baik sekolah.",
+                    "Memilih mengajukan mutasi pemindahan lokasi fisik bangunan sekolah ke area kecamatan lain yang dirasa lebih aman."
                 ],
-                correctText: "Menjalin kemitraan dengan BNN/Kepolisian setempat untuk mengadakan penyuluhan, sidak berkala, serta mengintensifkan publikasi program positif."
+                correctText: "Menjalin kemitraan dengan BNN/Kepolisian setempat untuk mengadakan penyuluhan, sidak berkala, serta mengintensifkan publikasi program positif sekolah."
             },
             {
                 comp: "Kewirausahaan & Aset Sekolah",
                 case: "Pendekatan berpikir berbasis aset atau kekuatan (Asset-Based Thinking) dalam pengelolaan sumber daya sekolah bermakna...",
                 options: [
-                    "Fokus mendata seluruh kekurangan, kerusakan, dan kelemahan fisik bangunan untuk dijadikan berkas proposal keluhan.",
+                    "Fokus mendata seluruh kekurangan, kerusakan, dan kelemahan fisik bangunan untuk dijadikan berkas proposal keluhan ke dinas.",
                     "Menemukan, memetakan, dan mengoptimalkan segala potensi kekuatan positif yang dimiliki sekolah (manusia, fisik, finansial, budaya) untuk kemajuan.",
-                    "Menolak melakukan inovasi program kerja apa pun sebelum ada instruksi mutlak dan kucuran dana bantuan.",
-                    "Membandingkan kelemahan sarpras sekolah sendiri dengan kemegahan sarana milik sekolah swasta."
+                    "Menolak melakukan inovasi program kerja apa pun sebelum ada instruksi mutlak dan kucuran dana bantuan modal dari pusat.",
+                    "Membandingkan kelemahan sarpras sekolah sendiri dengan kemegahan sarana milik sekolah swasta internasional."
                 ],
                 correctText: "Menemukan, memetakan, dan mengoptimalkan segala potensi kekuatan positif yang dimiliki sekolah (manusia, fisik, finansial, budaya) untuk kemajuan."
             },
@@ -375,8 +403,8 @@
                 options: [
                     "Ditugaskan penuh berjaga di gerbang sekolah secara bergantian untuk memastikan ketertiban absensi pagi.",
                     "Menjadikan mereka motor penggerak transformasi mutu kelas melalui peran aktif fasilitator Komunitas Belajar (Kombel) internal.",
-                    "Mengirimkan mereka keluar daerah untuk mengikuti berbagai ajang turnamen olahraga kedinasan.",
-                    "Melimpahkan seluruh beban mengajar kelas guru-guru senior kepada mereka."
+                    "Mengirimkan mereka keluar daerah untuk mengikuti berbagai ajang turnamen olahraga kedinasan antar-instansi.",
+                    "Melimpahkan seluruh beban mengajar kelas guru-guru senior kepada mereka agar guru senior bisa fokus beristirahat."
                 ],
                 correctText: "Menjadikan mereka motor penggerak transformasi mutu kelas melalui peran aktif fasilitator Komunitas Belajar (Kombel) internal."
             },
@@ -384,10 +412,10 @@
                 comp: "Kewirausahaan & Aset Sekolah",
                 case: "Sebagai kepala sekolah yang berjiwa wirausaha inovatif, ketika melihat deretan pohon buah di halaman sekolah panen lebat, langkah Anda adalah...",
                 options: [
-                    "Melarang murid menyentuh area pohon dan menjual buahnya secara tertutup untuk kebutuhan uang saku pribadi.",
+                    "Melarang murid menyentuh area pohon dan menjual buahnya secara tertutup untuk kebutuhan uang saku pribadi pimpinan.",
                     "Mengintegrasikan aset alam tersebut ke dalam aktivitas nyata P5 tema Kewirausahaan, melatih murid mengolah produk berekonomi jual.",
-                    "Menebang habis seluruh pepohonan tersebut karena dirasa mengotori estetika halaman.",
-                    "Membiarkan seluruh buah membusuk di tangkai pohon dan berjatuhan berserakan tanpa pengelolaan."
+                    "Menebang habis seluruh pepohonan tersebut karena dirasa mengotori estetika halaman dengan guguran daun-daun kering.",
+                    "Membiarkan seluruh buah membusuk di tangkai pohon dan berjatuhan berserakan tanpa adanya upaya pengelolaan."
                 ],
                 correctText: "Mengintegrasikan aset alam tersebut ke dalam aktivitas nyata P5 tema Kewirausahaan, melatih murid mengolah produk berekonomi jual."
             },
@@ -397,8 +425,8 @@
                 options: [
                     "Menyimpan rapat seluruh unit di dalam lemari besi berkunci di ruang kepala sekolah agar barang tetap steril, awet, dan tidak rusak.",
                     "Menyusun regulasi jadwal penggunaan bergilir antar-kelas untuk mendukung kegiatan literasi, numerasi, PMM, dan ANBK murid.",
-                    "Mempersilakan jajaran guru membawa pulang unit secara bebas untuk keperluan operasional keluarga.",
-                    "Menjual sebagian unit Chromebook tersebut ke pasar luar untuk menutup defisit operasional dewan guru."
+                    "Mempersilakan jajaran guru membawa pulang unit secara bebas untuk keperluan operasional hiburan keluarga di rumah.",
+                    "Menjual sebagian unit Chromebook tersebut ke pasar luar untuk menutup defisit biaya konsumsi rapat bulanan dewan guru."
                 ],
                 correctText: "Menyusun regulasi jadwal penggunaan bergilir antar-kelas untuk mendukung kegiatan literasi, numerasi, PMM, dan ANBK murid."
             },
@@ -408,45 +436,45 @@
                 options: [
                     "Mengalokasikan dana komite untuk membelikan fasilitas kendaraan roda empat baru khusus operasional kepala sekolah.",
                     "Menginvestasikan anggaran secara transparan pada pengadaan sarana kenyamanan belajar murid yang tidak ter-cover oleh dana BOS reguler.",
-                    "Menyimpan dana sumbangan di rekening deposito bank swasta atas nama pribadi pimpinan.",
+                    "Menyimpan dana sumbangan di rekening deposito bank swasta atas nama pribadi pimpinan demi mengejar bagi hasil bunga.",
                     "Membagi-bagikan sisa saldo kas akhir tahun sebagai bonus insentif tambahan bagi seluruh dewan pengurus komite."
                 ],
                 correctText: "Menginvestasikan anggaran secara transparan pada pengadaan sarana kenyamanan belajar murid yang tidak ter-cover oleh dana BOS reguler."
             }
         ];
 
-        // ENGINE GENERATOR: MEMBENTUK TEPAT 100 SOAL INTERAKTIF SECARA OTOMATIS
+        // HYBRID MATRIX LOAD ENGINE: GENERATE 100 UNIQUE DOUBLE-SHUFFLED INSTANCES
         let dataset = [];
         
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
+        function shuffleAlgorithm(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
+                [arr[i], arr[arr[j] ? j : i]] = [arr[j], arr[i]];
             }
-            return array;
+            return arr;
         }
 
-        // Kloning variasi dari pangkalan master data hingga mencapai kuota tepat 100 butir soal
+        // Loop array to fill out target length of 100 native nodes
         for (let i = 0; i < 100; i++) {
             let base = baseQuestionBank[i % baseQuestionBank.length];
-            let rawOptions = [...base.options];
-            let randomizedOptions = shuffleArray(rawOptions);
+            let rawOpts = [...base.options];
+            let dynamicOpts = shuffleAlgorithm(rawOpts);
 
             dataset.push({
                 comp: base.comp,
-                case: i >= baseQuestionBank.length ? `[Paket Skenario Kasus Studi B-${i}] \n${base.case}` : base.case,
-                options: randomizedOptions,
+                case: i >= baseQuestionBank.length ? `[Varian Kasus Pengayaan C-${i}] \n${base.case}` : base.case,
+                options: dynamicOpts,
                 correctText: base.correctText
             });
         }
 
-        // Pengacakan tahap akhir untuk mengacak nomor urutan soal dewan penguji
-        shuffleArray(dataset);
+        // Final random scramble mix for complete index distribution
+        shuffleAlgorithm(dataset);
 
         let currentIdx = 0;
         let answers = new Array(dataset.length).fill(null);
         let flagged = new Array(dataset.length).fill(false);
-        let timeRemaining = 120 * 60; // 120 Menit durasi pengerjaan CAT
+        let timeRemaining = 120 * 60; // 120 Minutes
 
         function initExam() {
             renderQuestion();
@@ -455,64 +483,70 @@
             startTimer();
         }
 
+        // UI Responsive Toggle Drawer Logic for Android Screens
+        function toggleMobileSidebar(open) {
+            const panel = document.getElementById("sidebar-panel");
+            const overlay = document.getElementById("sidebar-overlay");
+            
+            if (open) {
+                overlay.classList.remove("hidden");
+                setTimeout(() => {
+                    overlay.classList.add("opacity-100");
+                    panel.classList.remove("translate-x-full");
+                }, 10);
+            } else {
+                panel.classList.add("translate-x-full");
+                overlay.classList.remove("opacity-100");
+                setTimeout(() => overlay.classList.add("hidden"), 300);
+            }
+        }
+
         function renderQuestion() {
             const q = dataset[currentIdx];
             document.getElementById("comp-badge").innerText = q.comp;
-            document.getElementById("question-number").innerText = `Soal ${currentIdx + 1} dari ${dataset.length}`;
+            document.getElementById("question-number").innerText = `Soal ${currentIdx + 1} / ${dataset.length}`;
             document.getElementById("case-text").innerText = q.case;
 
             const optsContainer = document.getElementById("options-container");
             optsContainer.innerHTML = "";
 
-            const optLetters = ["A", "B", "C", "D"];
+            const letters = ["A", "B", "C", "D"];
 
-            q.options.forEach((optionText, idx) => {
-                const letter = optLetters[idx];
-                const isSelected = answers[currentIdx] === idx;
-                
+            q.options.forEach((txt, idx) => {
+                const selected = answers[currentIdx] === idx;
                 const optBtn = document.createElement("button");
-                optBtn.className = `w-full text-left p-4 rounded-xl border transition flex items-start gap-3.5 cursor-pointer text-sm md:text-base ${
-                    isSelected 
-                    ? "border-blue-500 bg-blue-950/40 text-blue-300 font-bold shadow-md shadow-blue-950/50" 
-                    : "border-slate-800 bg-slate-950/30 hover:bg-slate-800/50 text-slate-300 hover:text-slate-100"
+                optBtn.className = `w-full text-left p-3.5 md:p-4 rounded-xl border transition flex items-start gap-3 cursor-pointer ${
+                    selected 
+                    ? "border-blue-500 bg-blue-950/50 text-blue-300 font-bold shadow-md shadow-blue-950/80" 
+                    : "border-slate-800 bg-slate-950/30 text-slate-300 hover:bg-slate-800/40"
                 }`;
                 optBtn.onclick = () => selectAnswer(idx);
                 optBtn.innerHTML = `
-                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg text-xs font-black tracking-wider ${
-                        isSelected ? "bg-blue-600 text-white" : "bg-slate-800 text-slate-400"
-                    }">${letter}</span>
-                    <span class="flex-1 pt-0.5 leading-relaxed">${optionText}</span>
+                    <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg text-xs font-black ${
+                        selected ? "bg-blue-600 text-white" : "bg-slate-800 text-slate-400"
+                    }">${letters[idx]}</span>
+                    <span class="flex-1 pt-0.5 text-xs md:text-sm leading-relaxed">${txt}</span>
                 `;
                 optsContainer.appendChild(optBtn);
             });
 
-            const isFlagged = flagged[currentIdx];
+            // Adjust Flag View State
+            const stateFlagged = flagged[currentIdx];
             const flagBtn = document.getElementById("btn-flag");
             const flagIcon = document.getElementById("flag-icon");
             const flagText = document.getElementById("flag-text");
 
-            if(isFlagged) {
-                flagBtn.className = "cursor-pointer flex items-center gap-2 px-6 py-3 bg-amber-600 text-white font-black rounded-xl shadow-inner text-xs md:text-sm";
-                flagIcon.className = "fa-solid fa-flag animate-bounce text-white";
-                flagText.innerText = "SUDAH RAGU";
+            if(stateFlagged) {
+                flagBtn.className = "cursor-pointer flex items-center justify-center gap-1.5 px-4 py-3 bg-amber-600 text-white font-black rounded-xl shadow-inner text-xs flex-1 sm:flex-none";
+                flagIcon.className = "fa-solid fa-flag text-white";
+                flagText.innerText = "RAGU";
             } else {
-                flagBtn.className = "cursor-pointer flex items-center gap-2 px-6 py-3 bg-slate-800 text-slate-400 font-bold rounded-xl hover:bg-amber-500 hover:text-white transition text-xs md:text-sm";
+                flagBtn.className = "cursor-pointer flex items-center justify-center gap-1.5 px-4 py-3 bg-slate-800 text-slate-400 font-bold rounded-xl hover:bg-amber-500 hover:text-white transition text-xs flex-1 sm:flex-none";
                 flagIcon.className = "fa-regular fa-flag";
-                flagText.innerText = "RAGU-RAGU";
+                flagText.innerText = "RAGU";
             }
 
             document.getElementById("btn-prev").disabled = (currentIdx === 0);
-            
-            const nextBtn = document.getElementById("btn-next");
-            if(currentIdx === dataset.length - 1) {
-                nextBtn.innerHTML = `KIRIM SESI UJIAN <i class="fa-solid fa-circle-check"></i>`;
-                nextBtn.className = "cursor-pointer flex items-center gap-2 px-5 py-3 bg-emerald-600 text-white font-black rounded-xl hover:bg-emerald-700 transition shadow text-xs md:text-sm";
-                nextBtn.onclick = confirmSubmit;
-            } else {
-                nextBtn.innerHTML = `SELANJUTNYA <i class="fa-solid fa-chevron-right"></i>`;
-                nextBtn.className = "cursor-pointer flex items-center gap-2 px-5 py-3 bg-blue-600 text-white font-black rounded-xl hover:bg-blue-700 transition shadow text-xs md:text-sm";
-                nextBtn.onclick = () => changeQuestion(1);
-            }
         }
 
         function renderGrid() {
@@ -520,19 +554,22 @@
             grid.innerHTML = "";
 
             dataset.forEach((_, idx) => {
-                const isCurrent = idx === currentIdx;
-                const isAnswered = answers[idx] !== null;
-                const isFlagged = flagged[idx];
+                const curr = idx === currentIdx;
+                const filled = answers[idx] !== null;
+                const flag = flagged[idx];
 
-                let bgClass = "bg-slate-950/60 border-slate-800 text-slate-500 hover:bg-slate-800/40";
-                if (isAnswered) bgClass = "bg-emerald-950/60 border-emerald-800 text-emerald-400 font-black shadow-inner";
-                if (isFlagged) bgClass = "bg-amber-950/60 border-amber-800 text-amber-400 font-black";
-                if (isCurrent) bgClass += " ring-2 ring-blue-500 text-white border-transparent bg-slate-800 scale-105";
+                let cellStyle = "bg-slate-950/60 border-slate-800 text-slate-500 hover:bg-slate-800/40";
+                if (filled) cellStyle = "bg-emerald-950/60 border-emerald-800 text-emerald-400 font-black shadow-inner";
+                if (flag) cellStyle = "bg-amber-950/60 border-amber-800 text-amber-400 font-black";
+                if (curr) cellStyle += " ring-2 ring-blue-500 text-white border-transparent bg-slate-800 scale-105";
 
                 const cell = document.createElement("button");
-                cell.className = `border rounded-xl py-2.5 text-center font-bold text-xs transition cursor-pointer font-mono ${bgClass}`;
+                cell.className = `border rounded-xl py-2 text-center font-bold text-xs cursor-pointer font-mono ${cellStyle}`;
                 cell.innerText = idx + 1;
-                cell.onclick = () => jumpToQuestion(idx);
+                cell.onclick = () => {
+                    jumpToQuestion(idx);
+                    toggleMobileSidebar(false); // Auto close sidebar on touch inside Android view
+                };
                 grid.appendChild(cell);
             });
         }
@@ -548,6 +585,8 @@
 
         function changeQuestion(dir) {
             currentIdx += dir;
+            if (currentIdx < 0) currentIdx = 0;
+            if (currentIdx >= dataset.length) currentIdx = dataset.length - 1;
             renderQuestion();
             renderGrid();
         }
@@ -588,12 +627,12 @@
         }
 
         function confirmSubmit() {
-            const unselectedCount = answers.filter(a => a === null).length;
-            let warnText = "Apakah Anda sudah yakin ingin menyelesaikan seluruh 100 soal ujian CAT substansi ini?";
-            if(unselectedCount > 0) {
-                warnText = `⚠️ PERINGATAN: Masih terdapat ${unselectedCount} butir soal yang BELUM ANDA JAWAB. \n\n` + warnText;
+            const empty = answers.filter(a => a === null).length;
+            let checkText = "Kirim seluruh lembar jawaban sekarang untuk dinilai sistem?";
+            if(empty > 0) {
+                checkText = `⚠️ Terdeteksi ${empty} soal masih KOSONG! ` + checkText;
             }
-            if(confirm(warnText)) {
+            if(confirm(checkText)) {
                 submitExam();
             }
         }
@@ -602,61 +641,56 @@
             document.getElementById("exam-container").classList.add("hidden");
             document.getElementById("result-container").classList.remove("hidden");
 
-            let correctCount = 0;
-            let compMapGroup = {};
+            let score = 0;
+            let metrics = {};
 
             dataset.forEach((q, idx) => {
-                if(!compMapGroup[q.comp]) {
-                    compMapGroup[q.comp] = { total: 0, correct: 0 };
-                }
-                compMapGroup[q.comp].total++;
+                if(!metrics[q.comp]) metrics[q.comp] = { total: 0, correct: 0 };
+                metrics[q.comp].total++;
 
-                const chosenOptIdx = answers[idx];
-                if(chosenOptIdx !== null) {
-                    const chosenTextString = q.options[chosenOptIdx];
-                    if(chosenTextString === q.correctText) {
-                        correctCount++;
-                        compMapGroup[q.comp].correct++;
-                    }
+                const selectedIndex = answers[idx];
+                if(selectedIndex !== null && q.options[selectedIndex] === q.correctText) {
+                    score++;
+                    metrics[q.comp].correct++;
                 }
             });
 
-            const finalPercentageAccuracy = Math.round((correctCount / dataset.length) * 100);
-            document.getElementById("total-score").innerText = `${correctCount} / 100`;
-            document.getElementById("score-percentage").innerText = `AKURASI EVALUASI: ${finalPercentageAccuracy}%`;
+            const finalPct = Math.round((score / dataset.length) * 100);
+            document.getElementById("total-score").innerText = `${score} / 100`;
+            document.getElementById("score-percentage").innerText = `Tingkat Akurasi: ${finalPct}%`;
 
-            const breakdownEl = document.getElementById("competency-breakdown");
-            breakdownEl.innerHTML = "";
+            const breakdownBox = document.getElementById("competency-breakdown");
+            breakdownBox.innerHTML = "";
 
-            let weakestSector = "";
-            let lowestScoreRatio = 101;
+            let focusArea = "";
+            let lowestRatio = 101;
 
-            Object.entries(compMapGroup).forEach(([name, stat]) => {
-                const sectorPct = Math.round((stat.correct / stat.total) * 100);
-                if(sectorPct < lowestScoreRatio) {
-                    lowestScoreRatio = sectorPct;
-                    weakestSector = name;
+            Object.entries(metrics).forEach(([name, data]) => {
+                const ratio = Math.round((data.correct / data.total) * 100);
+                if(ratio < lowestRatio) {
+                    lowestRatio = ratio;
+                    focusArea = name;
                 }
 
-                const itemBox = document.createElement("div");
-                itemBox.className = "bg-slate-950/40 p-3.5 rounded-xl border border-slate-800/80 shadow-sm";
-                itemBox.innerHTML = `
-                    <div class="flex justify-between text-xs md:text-sm font-bold mb-1.5 tracking-wide">
-                        <span class="text-slate-300"><i class="fa-solid fa-angles-right text-blue-500 mr-1.5 text-[10px]"></i> ${name}</span>
-                        <span class="text-blue-400 font-mono">${stat.correct} / ${stat.total} (${sectorPct}%)</span>
+                const trackRow = document.createElement("div");
+                trackRow.className = "bg-slate-950/40 p-3 rounded-xl border border-slate-800/60";
+                trackRow.innerHTML = `
+                    <div class="flex justify-between text-xs font-bold mb-1 tracking-wide">
+                        <span class="text-slate-300 truncate max-w-[200px]">${name}</span>
+                        <span class="text-blue-400 font-mono">${data.correct}/${data.total} (${ratio}%)</span>
                     </div>
-                    <div class="w-full bg-slate-800 rounded-full h-2.5 overflow-hidden border border-slate-700/30">
-                        <div class="bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-500 h-2.5 rounded-full transition-all duration-1000" style="width: ${sectorPct}%"></div>
+                    <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden border border-slate-700/30">
+                        <div class="bg-gradient-to-r from-blue-500 to-emerald-500 h-2 rounded-full duration-1000 transition-all" style="width: ${ratio}%"></div>
                     </div>
                 `;
-                breakdownEl.appendChild(itemBox);
+                breakdownBox.appendChild(trackRow);
             });
 
-            let finalRecommendation = "Selamat! Tingkat penalaran kepemimpinan, manajerial, dan supervisi klinis Anda berada pada ambang batas keunggulan nasional.";
-            if(lowestScoreRatio < 80) {
-                finalRecommendation = `Analisis sistem mendeteksi kelemahan fokus pada rumpun **${weakestSector}** (${lowestScoreRatio}%). Direkomendasikan untuk menelaah kembali dokumen instrumen regulasi kementerian terkait, meningkatkan frekuensi bedah kasus PMM, serta mengasah pemetaan modal kepemimpinan kolaboratif berbasis satuan pendidikan.`;
+            let feedbackStr = "Luar biasa! Seluruh elemen penilaian substantif kepemimpinan sekolah Anda berada pada grafik unggul.";
+            if(lowestScoreRatio = 80) {
+                feedbackStr = `Evaluasi mendeteksi Anda perlu melakukan penguatan materi pada kelompok kompetensi **${focusArea}**. Pelajari juknis Kemendikbudristek terkait untuk persiapan ujian final.`;
             }
-            document.getElementById("advice-text").innerHTML = finalRecommendation;
+            document.getElementById("advice-text").innerHTML = feedbackStr;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
